@@ -1,0 +1,87 @@
+% Do not edit unless you really know what you are doing.
+\documentclass[11pt,english]{article}
+\usepackage{
+ae,aecompl}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{bbm}
+\graphicspath{ {Figures/} }
+\usepackage{float}
+\geometry{verbose,tmargin=.5in,bmargin=.5in,lmargin=.5in,rmargin=.5in}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{amsmath,tabu}
+\usepackage{amsthm,url}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage[export]{adjustbox}
+\hypersetup{colorlinks,urlcolor=blue,citecolor=blue,linkcolor=blue}
+\usepackage{hhline}
+\usepackage{booktabs}
+%line spacing
+\usepackage{setspace}
+\setstretch{1}
+\addtolength{\topmargin}{.9in}
+\addtolength{\textheight}{-1.1in}
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\theoremstyle{plain}
+\ifx\thechapter\undefined
+
+\newtheorem{thm}{\protect\theoremname}
+\else
+\newtheorem{thm}{\protect\theoremname}[chapter]
+\fi
+  \theoremstyle{remark}
+  \newtheorem{rem}[thm]{\protect\remarkname}
+
+\makeatother
+
+\usepackage{babel}
+  \providecommand{\remarkname}{Remark}
+\providecommand{\theoremname}{Theorem}
+
+
+\begin{document}
+
+\title{ECON 326: The Economics of Developing Countries \\
+$ $\\
+Midterm Exam}
+
+\section{Parental Beliefs and Investment in Education (Dizon-Ross 2019)}
+
+\begin{itemize} 
+\item[(a)] Why might parents in developing countries underinvest in their children’s education? Describe two potential reasons.
+
+You are evaluating the effects of an intervention in rural Malawi that provides parents with information about their children's true academic performance. 
+Students in selected schools were randomly assigned to treatment or control, and for students in the treatment grouo, parents were individually informed of their child’s performance relative to classmates using the school’s exam scores on student report cards. 
+You collect household-level data on how much parents spend on each child’s education over the next year.
+
+\item[(b)] Why might parents in developing countries have misperceptions about their children’s academic performance? Why might this lead to underinvestment in education?
+
+\item[(c)] The author runs a baseline survey to collect data on parental beliefs about their child’s academic performance.
+What is this data useful for? 
+
+\item[(d)] The author also runs an endline survey immediately after the baseline survey and information intervention. 
+Why might she want to do this?
+
+You estimate the effect of the treatment using the following child-level regression:
+\begin{equation}
+    Spending_{i} = \alpha + \beta T_{i} + \gamma X_{i} + \epsilon_{i}
+\end{equation}
+
+\item[(e)] Suppose parents in the control group found their children's ranks in ther classes informally from their peers. 
+How would this affect the estimate of $\beta$?
+
+\item[(f)] What's a source of hetergoeneity that might be interesting in this context?
+How would you adjust the regression specification to test for this heterogeneity?
+
+\item[(g)] How is this experiment different from Jensen (2010) that you read in class?
+
+
+\end{itemize}
+
+
+\end{document}

@@ -1,0 +1,523 @@
+---------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /Users/vaidehiparameswaran/Desktop/teaching/econ326-sp/slides/TA1/TA1.log
+  log type:  text
+ opened on:   4 Apr 2025, 10:52:51
+
+. 
+. * load the data
+. use "rawdata.dta", clear
+(NLSW, 1988 extract)
+
+. desc // describe the data briefly 
+
+Contains data from rawdata.dta
+ Observations:         2,246                  NLSW, 1988 extract
+    Variables:            16                  3 Apr 2025 15:48
+                                              (_dta has notes)
+---------------------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+---------------------------------------------------------------------------------------------
+idcode          int     %8.0g                 NLS ID
+age             byte    %8.0g                 Age in current year
+race            byte    %8.0g      racelbl    Race
+married         byte    %8.0g      marlbl     Married
+never_married   byte    %16.0g     nev_mar    Never married
+educ            byte    %8.0g                 Current grade completed
+south           byte    %9.0g      southlbl   Lives in the south
+smsa            byte    %9.0g      smsalbl    Lives in SMSA
+c_city          byte    %16.0g     ccitylbl   Lives in a central city
+industry        byte    %23.0g     indlbl     Industry
+occupation      byte    %22.0g     occlbl     Occupation
+union           byte    %8.0g      unionlbl   Union worker
+wage            float   %9.0g                 Hourly wage
+hours           byte    %8.0g                 Usual hours worked
+ttl_exp         float   %9.0g                 Total work experience (years)
+tenure          float   %9.0g                 Job tenure (years)
+---------------------------------------------------------------------------------------------
+Sorted by: idcode
+
+. codebook // describe the data in detail
+
+---------------------------------------------------------------------------------------------
+idcode                                                                                 NLS ID
+---------------------------------------------------------------------------------------------
+
+                  Type: Numeric (int)
+
+                 Range: [1,5159]                      Units: 1
+         Unique values: 2,246                     Missing .: 0/2,246
+
+                  Mean: 2612.65
+             Std. dev.: 1480.86
+
+           Percentiles:     10%       25%       50%       75%       90%
+                            521      1366      2614      3903      4651
+
+---------------------------------------------------------------------------------------------
+age                                                                       Age in current year
+---------------------------------------------------------------------------------------------
+
+                  Type: Numeric (byte)
+
+                 Range: [34,46]                       Units: 1
+         Unique values: 13                        Missing .: 0/2,246
+
+                  Mean: 39.1532
+             Std. dev.:    3.06
+
+           Percentiles:     10%       25%       50%       75%       90%
+                             35        36        39        42        44
+
+---------------------------------------------------------------------------------------------
+race                                                                                     Race
+---------------------------------------------------------------------------------------------
+
+                  Type: Numeric (byte)
+                 Label: racelbl
+
+                 Range: [1,3]                         Units: 1
+         Unique values: 3                         Missing .: 0/2,246
+
+            Tabulation: Freq.   Numeric  Label
+                        1,637         1  White
+                          583         2  Black
+                           26         3  Other
+
+---------------------------------------------------------------------------------------------
+married                                                                               Married
+---------------------------------------------------------------------------------------------
+
+                  Type: Numeric (byte)
+                 Label: marlbl
+
+                 Range: [0,1]                         Units: 1
+         Unique values: 2                         Missing .: 0/2,246
+
+            Tabulation: Freq.   Numeric  Label
+                          804         0  Single
+                        1,442         1  Married
+
+---------------------------------------------------------------------------------------------
+never_married                                                                   Never married
+---------------------------------------------------------------------------------------------
+
+                  Type: Numeric (byte)
+                 Label: nev_mar
+
+                 Range: [0,1]                         Units: 1
+         Unique values: 2                         Missing .: 0/2,246
+
+            Tabulation: Freq.   Numeric  Label
+                        2,012         0  Has been married
+                          234         1  Never married
+
+---------------------------------------------------------------------------------------------
+educ                                                                  Current grade completed
+---------------------------------------------------------------------------------------------
+
+                  Type: Numeric (byte)
+
+                 Range: [0,18]                        Units: 1
+         Unique values: 16                        Missing .: 2/2,246
+
+                  Mean: 13.0989
+             Std. dev.: 2.52125
+
+           Percentiles:     10%       25%       50%       75%       90%
+                             11        12        12        15        17
+
+---------------------------------------------------------------------------------------------
+south                                                                      Lives in the south
+---------------------------------------------------------------------------------------------
+
+                  Type: Numeric (byte)
+                 Label: southlbl
+
+                 Range: [0,1]                         Units: 1
+         Unique values: 2                         Missing .: 0/2,246
+
+            Tabulation: Freq.   Numeric  Label
+                        1,304         0  Not south
+                          942         1  South
+
+---------------------------------------------------------------------------------------------
+smsa                                                                            Lives in SMSA
+---------------------------------------------------------------------------------------------
+
+                  Type: Numeric (byte)
+                 Label: smsalbl
+
+                 Range: [0,1]                         Units: 1
+         Unique values: 2                         Missing .: 0/2,246
+
+            Tabulation: Freq.   Numeric  Label
+                          665         0  Not SMSA
+                        1,581         1  SMSA
+
+---------------------------------------------------------------------------------------------
+c_city                                                                Lives in a central city
+---------------------------------------------------------------------------------------------
+
+                  Type: Numeric (byte)
+                 Label: ccitylbl
+
+                 Range: [0,1]                         Units: 1
+         Unique values: 2                         Missing .: 0/2,246
+
+            Tabulation: Freq.   Numeric  Label
+                        1,591         0  Not central city
+                          655         1  Central city
+
+---------------------------------------------------------------------------------------------
+industry                                                                             Industry
+---------------------------------------------------------------------------------------------
+
+                  Type: Numeric (byte)
+                 Label: indlbl
+
+                 Range: [1,12]                        Units: 1
+         Unique values: 12                        Missing .: 14/2,246
+
+              Examples: 5     Transport/Comm/Utility
+                        7     Finance/Ins/Real estate
+                        11    Professional services
+                        11    Professional services
+
+---------------------------------------------------------------------------------------------
+occupation                                                                         Occupation
+---------------------------------------------------------------------------------------------
+
+                  Type: Numeric (byte)
+                 Label: occlbl
+
+                 Range: [1,13]                        Units: 1
+         Unique values: 13                        Missing .: 9/2,246
+
+              Examples: 2     Managers/Admin
+                        3     Sales
+                        4     Clerical/Unskilled
+                        8     Laborers
+
+---------------------------------------------------------------------------------------------
+union                                                                            Union worker
+---------------------------------------------------------------------------------------------
+
+                  Type: Numeric (byte)
+                 Label: unionlbl
+
+                 Range: [0,1]                         Units: 1
+         Unique values: 2                         Missing .: 368/2,246
+
+            Tabulation: Freq.   Numeric  Label
+                        1,417         0  Nonunion
+                          461         1  Union
+                          368         .  
+
+---------------------------------------------------------------------------------------------
+wage                                                                              Hourly wage
+---------------------------------------------------------------------------------------------
+
+                  Type: Numeric (float)
+
+                 Range: [1.0049518,40.74659]          Units: 1.000e-07
+         Unique values: 967                       Missing .: 0/2,246
+
+                  Mean: 7.76695
+             Std. dev.: 5.75552
+
+           Percentiles:     10%       25%       50%       75%       90%
+                        3.22061   4.25926   6.27227   9.59742   12.7778
+
+---------------------------------------------------------------------------------------------
+hours                                                                      Usual hours worked
+---------------------------------------------------------------------------------------------
+
+                  Type: Numeric (byte)
+
+                 Range: [1,80]                        Units: 1
+         Unique values: 62                        Missing .: 4/2,246
+
+                  Mean: 37.2181
+             Std. dev.: 10.5091
+
+           Percentiles:     10%       25%       50%       75%       90%
+                             20        35        40        40        48
+
+---------------------------------------------------------------------------------------------
+ttl_exp                                                         Total work experience (years)
+---------------------------------------------------------------------------------------------
+
+                  Type: Numeric (float)
+
+                 Range: [.11538462,28.884615]         Units: 1.000e-09
+         Unique values: 1,546                     Missing .: 0/2,246
+
+                  Mean:  12.535
+             Std. dev.: 4.61021
+
+           Percentiles:     10%       25%       50%       75%       90%
+                        6.01282   9.21154    13.125   15.9808   18.1538
+
+---------------------------------------------------------------------------------------------
+tenure                                                                     Job tenure (years)
+---------------------------------------------------------------------------------------------
+
+                  Type: Numeric (float)
+
+                 Range: [0,25.916666]                 Units: 1.000e-09
+         Unique values: 259                       Missing .: 15/2,246
+
+                  Mean: 5.97785
+             Std. dev.: 5.51033
+
+           Percentiles:     10%       25%       50%       75%       90%
+                        .583333   1.58333   3.83333   9.33333     14.75
+
+. summ // summarise all variables
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+      idcode |      2,246    2612.654    1480.864          1       5159
+         age |      2,246    39.15316    3.060002         34         46
+        race |      2,246    1.282725    .4754413          1          3
+     married |      2,246    .6420303    .4795099          0          1
+never_marr~d |      2,246    .1041852    .3055687          0          1
+-------------+---------------------------------------------------------
+        educ |      2,244    13.09893    2.521246          0         18
+       south |      2,246    .4194123    .4935728          0          1
+        smsa |      2,246    .7039181    .4566292          0          1
+      c_city |      2,246    .2916296    .4546139          0          1
+    industry |      2,232    8.189516    3.010875          1         12
+-------------+---------------------------------------------------------
+  occupation |      2,237    4.642825    3.408897          1         13
+       union |      1,878    .2454739    .4304825          0          1
+        wage |      2,246    7.766949    5.755523   1.004952   40.74659
+       hours |      2,242    37.21811    10.50914          1         80
+     ttl_exp |      2,246    12.53498    4.610208   .1153846   28.88461
+-------------+---------------------------------------------------------
+      tenure |      2,231     5.97785    5.510331          0   25.91667
+
+. br // browse the data 
+
+. 
+. * summarise specific variables 
+. summ age, d
+
+                     Age in current year
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%           34             34
+ 5%           35             34
+10%           35             34       Obs               2,246
+25%           36             34       Sum of wgt.       2,246
+
+50%           39                      Mean           39.15316
+                        Largest       Std. dev.      3.060002
+75%           42             45
+90%           44             45       Variance       9.363614
+95%           44             46       Skewness       .2003234
+99%           45             46       Kurtosis       1.932389
+
+. summ wage, d
+
+                         Hourly wage
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     1.930993       1.004952
+ 5%     2.801002       1.032247
+10%     3.220612       1.151368       Obs               2,246
+25%     4.259257       1.344605       Sum of wgt.       2,246
+
+50%      6.27227                      Mean           7.766949
+                        Largest       Std. dev.      5.755523
+75%     9.597424       40.19808
+90%     12.77777       40.19808       Variance       33.12604
+95%     16.52979       40.19808       Skewness       3.096199
+99%     38.70926       40.74659       Kurtosis       15.85446
+
+. tab educ // tabulate values
+
+    Current |
+      grade |
+  completed |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |          2        0.09        0.09
+          4 |          3        0.13        0.22
+          5 |          1        0.04        0.27
+          6 |         14        0.62        0.89
+          7 |         19        0.85        1.74
+          8 |         33        1.47        3.21
+          9 |         55        2.45        5.66
+         10 |         84        3.74        9.40
+         11 |        123        5.48       14.88
+         12 |        943       42.02       56.91
+         13 |        176        7.84       64.75
+         14 |        187        8.33       73.08
+         15 |         92        4.10       77.18
+         16 |        252       11.23       88.41
+         17 |        106        4.72       93.14
+         18 |        154        6.86      100.00
+------------+-----------------------------------
+      Total |      2,244      100.00
+
+. tab educ race // cross-tabulation
+
+   Current |
+     grade |               Race
+ completed |     White      Black      Other |     Total
+-----------+---------------------------------+----------
+         0 |         0          1          1 |         2 
+         4 |         1          2          0 |         3 
+         5 |         1          0          0 |         1 
+         6 |         6          7          1 |        14 
+         7 |         9          9          1 |        19 
+         8 |        16         17          0 |        33 
+         9 |        24         31          0 |        55 
+        10 |        51         32          1 |        84 
+        11 |        72         51          0 |       123 
+        12 |       707        233          3 |       943 
+        13 |       134         37          5 |       176 
+        14 |       141         43          3 |       187 
+        15 |        68         21          3 |        92 
+        16 |       203         46          3 |       252 
+        17 |        77         25          4 |       106 
+        18 |       126         27          1 |       154 
+-----------+---------------------------------+----------
+     Total |     1,636        582         26 |     2,244 
+
+. 
+. * generate dummy variables
+. gen collgrad = (educ > 12) // create a dummy variable for college graduates
+
+. label var collgrad "College graduate" // add variable label
+
+. br // browse the data to check the new variable
+
+. 
+. * logical statements
+. summ wage if educ > 10 // if greater than
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+        wage |      2,035    8.066492    5.855042   1.032247   40.74659
+
+. summ wage if collgrad == 0 // if equal to
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+        wage |      1,277    6.255746    4.660597   1.004952   40.19808
+
+. summ wage if collgrad != 0 // if not equal to
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+        wage |        969    9.758493    6.419571   1.032247   40.74659
+
+. 
+. * create log wage variable and add variable label
+. gen lwage = log(wage)
+
+. label var lwage "Log Hourly Wage"
+
+. 
+. * save data
+. cap mkdir output // make directory output if it doesn't exist
+
+. save "output/nls88.dta", replace //save and overwrite if file already exists
+file output/nls88.dta saved
+
+. 
+. * visualisations with formatting options
+. twoway (scatter lwage ttl_exp, msize(vsmall) mcol(blue)) ///
+>     (lfit lwage ttl_exp, lcolor(red) lwidth(medium) ///
+>     xtitle("Total Experience") ytitle("Log Hourly Wage") ///
+>     title("Scatterplot of Log Hourly Wage and Total Experience"))
+
+. // other usual options: title, note, legend, xlabel, ylabel, xline, yline, etc.
+. 
+. * save and export graph
+. graph export "output/scatterplot.png", replace
+file
+    /Users/vaidehiparameswaran/Desktop/teaching/econ326-sp/slides/TA1/output/scatterplot.pn
+    > g saved as PNG format
+
+. 
+. * regressions 
+. reg lwage educ ttl_exp age // simple regression
+
+      Source |       SS           df       MS      Number of obs   =     2,244
+-------------+----------------------------------   F(3, 2240)      =    277.64
+       Model |  200.836661         3  66.9455538   Prob > F        =    0.0000
+    Residual |  540.126138     2,240   .24112774   R-squared       =    0.2710
+-------------+----------------------------------   Adj R-squared   =    0.2701
+       Total |  740.962799     2,243  .330344538   Root MSE        =    .49105
+
+------------------------------------------------------------------------------
+       lwage | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+        educ |   .0798806    .004203    19.01   0.000     .0716384    .0881228
+     ttl_exp |   .0401631   .0023148    17.35   0.000     .0356238    .0447025
+         age |   -.009497     .00342    -2.78   0.006    -.0162037   -.0027903
+       _cons |   .6909684   .1452393     4.76   0.000     .4061508     .975786
+------------------------------------------------------------------------------
+
+. reg lwage educ ttl_exp age, robust // robust standard errors
+
+Linear regression                               Number of obs     =      2,244
+                                                F(3, 2240)        =     289.15
+                                                Prob > F          =     0.0000
+                                                R-squared         =     0.2710
+                                                Root MSE          =     .49105
+
+------------------------------------------------------------------------------
+             |               Robust
+       lwage | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+        educ |   .0798806   .0042657    18.73   0.000     .0715155    .0882457
+     ttl_exp |   .0401631   .0022606    17.77   0.000     .0357301    .0445962
+         age |   -.009497   .0034063    -2.79   0.005    -.0161769   -.0028171
+       _cons |   .6909684   .1487647     4.64   0.000     .3992374    .9826994
+------------------------------------------------------------------------------
+
+. 
+. * binary variables 
+. reg lwage collgrad, r
+
+Linear regression                               Number of obs     =      2,246
+                                                F(1, 2244)        =     356.90
+                                                Prob > F          =     0.0000
+                                                R-squared         =     0.1403
+                                                Root MSE          =     .53288
+
+------------------------------------------------------------------------------
+             |               Robust
+       lwage | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+    collgrad |   .4344145   .0229949    18.89   0.000     .3893211     .479508
+       _cons |   1.681224   .0142907   117.64   0.000       1.6532    1.709248
+------------------------------------------------------------------------------
+
+. summ lwage if collgrad == 0
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+       lwage |      1,277    1.681224    .5106541   .0049396   3.693819
+
+. summ lwage if collgrad == 1 
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+       lwage |        969    2.115638    .5608235   .0317383   3.707372
+
+. // note that the difference in mean wages is equal to the coefficient on collgrad in the re
+> gression
+. 
+. * close log
+. log close
+      name:  <unnamed>
+       log:  /Users/vaidehiparameswaran/Desktop/teaching/econ326-sp/slides/TA1/TA1.log
+  log type:  text
+ closed on:   4 Apr 2025, 10:52:52
+---------------------------------------------------------------------------------------------

@@ -1,0 +1,714 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/vaidehiparameswaran/Desktop/teaching/econ326-sp/slides/TA1/TA1.txt
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 4 Apr 2025, 09:56:34
+
+{com}. use "rawdata.dta", clear
+{txt}(NLSW, 1988 extract)
+
+{com}. desc
+
+{txt}Contains data from {res}rawdata.dta
+{txt} Observations:{res}         2,246                  NLSW, 1988 extract
+{txt}    Variables:{res}            16                  3 Apr 2025 15:48
+                                              (_dta has notes)
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:idcode         }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}NLS ID{p_end}
+{p 0 48}{bind:age            }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Age in current year{p_end}
+{p 0 48}{bind:race           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:racelbl  }{bind:  }{res}{res}Race{p_end}
+{p 0 48}{bind:married        }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:marlbl   }{bind:  }{res}{res}Married{p_end}
+{p 0 48}{bind:never_married  }{txt}{bind: byte    }{bind:%16.0g    }{space 1}{bind:nev_mar  }{bind:  }{res}{res}Never married{p_end}
+{p 0 48}{bind:educ           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Current grade completed{p_end}
+{p 0 48}{bind:south          }{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:southlbl }{bind:  }{res}{res}Lives in the south{p_end}
+{p 0 48}{bind:smsa           }{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:smsalbl  }{bind:  }{res}{res}Lives in SMSA{p_end}
+{p 0 48}{bind:c_city         }{txt}{bind: byte    }{bind:%16.0g    }{space 1}{bind:ccitylbl }{bind:  }{res}{res}Lives in a central city{p_end}
+{p 0 48}{bind:industry       }{txt}{bind: byte    }{bind:%23.0g    }{space 1}{bind:indlbl   }{bind:  }{res}{res}Industry{p_end}
+{p 0 48}{bind:occupation     }{txt}{bind: byte    }{bind:%22.0g    }{space 1}{bind:occlbl   }{bind:  }{res}{res}Occupation{p_end}
+{p 0 48}{bind:union          }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:unionlbl }{bind:  }{res}{res}Union worker{p_end}
+{p 0 48}{bind:wage           }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Hourly wage{p_end}
+{p 0 48}{bind:hours          }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Usual hours worked{p_end}
+{p 0 48}{bind:ttl_exp        }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Total work experience (years){p_end}
+{p 0 48}{bind:tenure         }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Job tenure (years){p_end}
+{txt}{hline}
+Sorted by: {res}idcode
+
+{com}. count
+  {res}2,246
+
+{com}. di _N
+{res}2246
+
+{com}. codebook
+
+{txt}{hline}
+{res}idcode{right:NLS ID}
+{txt}{hline}
+
+{col 19}Type: Numeric ({res}int{txt})
+
+{col 18}Range: [{res}1{txt},{res}5159{txt}]{col 55}Units: {res}1
+{col 10}{txt}Unique values: {res}2,246{col 51}{txt}Missing .: {res}0{txt}/{res}2,246
+
+{txt}{col 19}Mean: {res}{ralign 7:2612.65}
+{txt}{col 14}Std. dev.: {res}{ralign 7:1480.86}
+
+{txt}{col 12}Percentiles: {col 25}{ralign 7:10%}{ralign 10:25%}{ralign 10:50%}{ralign 10:75%}{ralign 10:90%}
+{res}{col 25}{ralign 7:521}{ralign 10:    1366}{ralign 10:    2614}{ralign 10:    3903}{ralign 10:    4651}
+
+{txt}{hline}
+{res}age{right:Age in current year}
+{txt}{hline}
+
+{col 19}Type: Numeric ({res}byte{txt})
+
+{col 18}Range: [{res}34{txt},{res}46{txt}]{col 55}Units: {res}1
+{col 10}{txt}Unique values: {res}13{col 51}{txt}Missing .: {res}0{txt}/{res}2,246
+
+{txt}{col 19}Mean: {res}{ralign 7:39.1532}
+{txt}{col 14}Std. dev.: {res}{ralign 7:3.06}
+
+{txt}{col 12}Percentiles: {col 25}{ralign 7:10%}{ralign 10:25%}{ralign 10:50%}{ralign 10:75%}{ralign 10:90%}
+{res}{col 25}{ralign 7:35}{ralign 10:      36}{ralign 10:      39}{ralign 10:      42}{ralign 10:      44}
+
+{txt}{hline}
+{res}race{right:Race}
+{txt}{hline}
+
+{col 19}Type: Numeric ({res}byte{txt})
+{ralign 22:Label}: {res:racelbl}
+
+{col 18}Range: [{res}1{txt},{res}3{txt}]{col 55}Units: {res}1
+{col 10}{txt}Unique values: {res}3{col 51}{txt}Missing .: {res}0{txt}/{res}2,246
+
+{txt}{col 13}Tabulation: Freq.   Numeric  Label
+{col 20}{res}     1,637{col 32}       1{col 42}{txt}White
+{col 20}{res}       583{col 32}       2{col 42}{txt}Black
+{col 20}{res}        26{col 32}       3{col 42}{txt}Other
+
+{txt}{hline}
+{res}married{right:Married}
+{txt}{hline}
+
+{col 19}Type: Numeric ({res}byte{txt})
+{ralign 22:Label}: {res:marlbl}
+
+{col 18}Range: [{res}0{txt},{res}1{txt}]{col 55}Units: {res}1
+{col 10}{txt}Unique values: {res}2{col 51}{txt}Missing .: {res}0{txt}/{res}2,246
+
+{txt}{col 13}Tabulation: Freq.   Numeric  Label
+{col 20}{res}       804{col 32}       0{col 42}{txt}Single
+{col 20}{res}     1,442{col 32}       1{col 42}{txt}Married
+
+{txt}{hline}
+{res}never_married{right:Never married}
+{txt}{hline}
+
+{col 19}Type: Numeric ({res}byte{txt})
+{ralign 22:Label}: {res:nev_mar}
+
+{col 18}Range: [{res}0{txt},{res}1{txt}]{col 55}Units: {res}1
+{col 10}{txt}Unique values: {res}2{col 51}{txt}Missing .: {res}0{txt}/{res}2,246
+
+{txt}{col 13}Tabulation: Freq.   Numeric  Label
+{col 20}{res}     2,012{col 32}       0{col 42}{txt}Has been married
+{col 20}{res}       234{col 32}       1{col 42}{txt}Never married
+
+{txt}{hline}
+{res}educ{right:Current grade completed}
+{txt}{hline}
+
+{col 19}Type: Numeric ({res}byte{txt})
+
+{col 18}Range: [{res}0{txt},{res}18{txt}]{col 55}Units: {res}1
+{col 10}{txt}Unique values: {res}16{col 51}{txt}Missing .: {res}2{txt}/{res}2,246
+
+{txt}{col 19}Mean: {res}{ralign 7:13.0989}
+{txt}{col 14}Std. dev.: {res}{ralign 7:2.52125}
+
+{txt}{col 12}Percentiles: {col 25}{ralign 7:10%}{ralign 10:25%}{ralign 10:50%}{ralign 10:75%}{ralign 10:90%}
+{res}{col 25}{ralign 7:11}{ralign 10:      12}{ralign 10:      12}{ralign 10:      15}{ralign 10:      17}
+
+{txt}{hline}
+{res}south{right:Lives in the south}
+{txt}{hline}
+
+{col 19}Type: Numeric ({res}byte{txt})
+{ralign 22:Label}: {res:southlbl}
+
+{col 18}Range: [{res}0{txt},{res}1{txt}]{col 55}Units: {res}1
+{col 10}{txt}Unique values: {res}2{col 51}{txt}Missing .: {res}0{txt}/{res}2,246
+
+{txt}{col 13}Tabulation: Freq.   Numeric  Label
+{col 20}{res}     1,304{col 32}       0{col 42}{txt}Not south
+{col 20}{res}       942{col 32}       1{col 42}{txt}South
+
+{txt}{hline}
+{res}smsa{right:Lives in SMSA}
+{txt}{hline}
+
+{col 19}Type: Numeric ({res}byte{txt})
+{ralign 22:Label}: {res:smsalbl}
+
+{col 18}Range: [{res}0{txt},{res}1{txt}]{col 55}Units: {res}1
+{col 10}{txt}Unique values: {res}2{col 51}{txt}Missing .: {res}0{txt}/{res}2,246
+
+{txt}{col 13}Tabulation: Freq.   Numeric  Label
+{col 20}{res}       665{col 32}       0{col 42}{txt}Not SMSA
+{col 20}{res}     1,581{col 32}       1{col 42}{txt}SMSA
+
+{txt}{hline}
+{res}c_city{right:Lives in a central city}
+{txt}{hline}
+
+{col 19}Type: Numeric ({res}byte{txt})
+{ralign 22:Label}: {res:ccitylbl}
+
+{col 18}Range: [{res}0{txt},{res}1{txt}]{col 55}Units: {res}1
+{col 10}{txt}Unique values: {res}2{col 51}{txt}Missing .: {res}0{txt}/{res}2,246
+
+{txt}{col 13}Tabulation: Freq.   Numeric  Label
+{col 20}{res}     1,591{col 32}       0{col 42}{txt}Not central city
+{col 20}{res}       655{col 32}       1{col 42}{txt}Central city
+
+{txt}{hline}
+{res}industry{right:Industry}
+{txt}{hline}
+
+{col 19}Type: Numeric ({res}byte{txt})
+{ralign 22:Label}: {res:indlbl}
+
+{col 18}Range: [{res}1{txt},{res}12{txt}]{col 55}Units: {res}1
+{col 10}{txt}Unique values: {res}12{col 51}{txt}Missing .: {res}14{txt}/{res}2,246
+
+{txt}{ralign 23: Examples:}{col 25}{res}5{col 31}{txt}Transport/Comm/Utility
+{ralign 23: }{col 25}{res}7{col 31}{txt}Finance/Ins/Real estate
+{ralign 23: }{col 25}{res}11{col 31}{txt}Professional services
+{ralign 23: }{col 25}{res}11{col 31}{txt}Professional services
+
+{txt}{hline}
+{res}occupation{right:Occupation}
+{txt}{hline}
+
+{col 19}Type: Numeric ({res}byte{txt})
+{ralign 22:Label}: {res:occlbl}
+
+{col 18}Range: [{res}1{txt},{res}13{txt}]{col 55}Units: {res}1
+{col 10}{txt}Unique values: {res}13{col 51}{txt}Missing .: {res}9{txt}/{res}2,246
+
+{txt}{ralign 23: Examples:}{col 25}{res}2{col 31}{txt}Managers/Admin
+{ralign 23: }{col 25}{res}3{col 31}{txt}Sales
+{ralign 23: }{col 25}{res}4{col 31}{txt}Clerical/Unskilled
+{ralign 23: }{col 25}{res}8{col 31}{txt}Laborers
+
+{txt}{hline}
+{res}union{right:Union worker}
+{txt}{hline}
+
+{col 19}Type: Numeric ({res}byte{txt})
+{ralign 22:Label}: {res:unionlbl}
+
+{col 18}Range: [{res}0{txt},{res}1{txt}]{col 55}Units: {res}1
+{col 10}{txt}Unique values: {res}2{col 51}{txt}Missing .: {res}368{txt}/{res}2,246
+
+{txt}{col 13}Tabulation: Freq.   Numeric  Label
+{col 20}{res}     1,417{col 32}       0{col 42}{txt}Nonunion
+{col 20}{res}       461{col 32}       1{col 42}{txt}Union
+{col 20}{res}       368{col 32}       .{col 42}
+
+{txt}{hline}
+{res}wage{right:Hourly wage}
+{txt}{hline}
+
+{col 19}Type: Numeric ({res}float{txt})
+
+{col 18}Range: [{res}1.0049518{txt},{res}40.74659{txt}]{col 55}Units: {res}1.000e-07
+{col 10}{txt}Unique values: {res}967{col 51}{txt}Missing .: {res}0{txt}/{res}2,246
+
+{txt}{col 19}Mean: {res}{ralign 7:7.76695}
+{txt}{col 14}Std. dev.: {res}{ralign 7:5.75552}
+
+{txt}{col 12}Percentiles: {col 25}{ralign 7:10%}{ralign 10:25%}{ralign 10:50%}{ralign 10:75%}{ralign 10:90%}
+{res}{col 25}{ralign 7:3.22061}{ralign 10: 4.25926}{ralign 10: 6.27227}{ralign 10: 9.59742}{ralign 10: 12.7778}
+
+{txt}{hline}
+{res}hours{right:Usual hours worked}
+{txt}{hline}
+
+{col 19}Type: Numeric ({res}byte{txt})
+
+{col 18}Range: [{res}1{txt},{res}80{txt}]{col 55}Units: {res}1
+{col 10}{txt}Unique values: {res}62{col 51}{txt}Missing .: {res}4{txt}/{res}2,246
+
+{txt}{col 19}Mean: {res}{ralign 7:37.2181}
+{txt}{col 14}Std. dev.: {res}{ralign 7:10.5091}
+
+{txt}{col 12}Percentiles: {col 25}{ralign 7:10%}{ralign 10:25%}{ralign 10:50%}{ralign 10:75%}{ralign 10:90%}
+{res}{col 25}{ralign 7:20}{ralign 10:      35}{ralign 10:      40}{ralign 10:      40}{ralign 10:      48}
+
+{txt}{hline}
+{res}ttl_exp{right:Total work experience (years)}
+{txt}{hline}
+
+{col 19}Type: Numeric ({res}float{txt})
+
+{col 18}Range: [{res}.11538462{txt},{res}28.884615{txt}]{col 55}Units: {res}1.000e-09
+{col 10}{txt}Unique values: {res}1,546{col 51}{txt}Missing .: {res}0{txt}/{res}2,246
+
+{txt}{col 19}Mean: {res}{ralign 7:12.535}
+{txt}{col 14}Std. dev.: {res}{ralign 7:4.61021}
+
+{txt}{col 12}Percentiles: {col 25}{ralign 7:10%}{ralign 10:25%}{ralign 10:50%}{ralign 10:75%}{ralign 10:90%}
+{res}{col 25}{ralign 7:6.01282}{ralign 10: 9.21154}{ralign 10:  13.125}{ralign 10: 15.9808}{ralign 10: 18.1538}
+
+{txt}{hline}
+{res}tenure{right:Job tenure (years)}
+{txt}{hline}
+
+{col 19}Type: Numeric ({res}float{txt})
+
+{col 18}Range: [{res}0{txt},{res}25.916666{txt}]{col 55}Units: {res}1.000e-09
+{col 10}{txt}Unique values: {res}259{col 51}{txt}Missing .: {res}15{txt}/{res}2,246
+
+{txt}{col 19}Mean: {res}{ralign 7:5.97785}
+{txt}{col 14}Std. dev.: {res}{ralign 7:5.51033}
+
+{txt}{col 12}Percentiles: {col 25}{ralign 7:10%}{ralign 10:25%}{ralign 10:50%}{ralign 10:75%}{ralign 10:90%}
+{res}{col 25}{ralign 7:.583333}{ralign 10: 1.58333}{ralign 10: 3.83333}{ralign 10: 9.33333}{ralign 10:   14.75}
+
+{com}. br
+
+. desc
+
+{txt}Contains data from {res}rawdata.dta
+{txt} Observations:{res}         2,246                  NLSW, 1988 extract
+{txt}    Variables:{res}            16                  3 Apr 2025 15:48
+                                              (_dta has notes)
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:idcode         }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}NLS ID{p_end}
+{p 0 48}{bind:age            }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Age in current year{p_end}
+{p 0 48}{bind:race           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:racelbl  }{bind:  }{res}{res}Race{p_end}
+{p 0 48}{bind:married        }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:marlbl   }{bind:  }{res}{res}Married{p_end}
+{p 0 48}{bind:never_married  }{txt}{bind: byte    }{bind:%16.0g    }{space 1}{bind:nev_mar  }{bind:  }{res}{res}Never married{p_end}
+{p 0 48}{bind:educ           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Current grade completed{p_end}
+{p 0 48}{bind:south          }{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:southlbl }{bind:  }{res}{res}Lives in the south{p_end}
+{p 0 48}{bind:smsa           }{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:smsalbl  }{bind:  }{res}{res}Lives in SMSA{p_end}
+{p 0 48}{bind:c_city         }{txt}{bind: byte    }{bind:%16.0g    }{space 1}{bind:ccitylbl }{bind:  }{res}{res}Lives in a central city{p_end}
+{p 0 48}{bind:industry       }{txt}{bind: byte    }{bind:%23.0g    }{space 1}{bind:indlbl   }{bind:  }{res}{res}Industry{p_end}
+{p 0 48}{bind:occupation     }{txt}{bind: byte    }{bind:%22.0g    }{space 1}{bind:occlbl   }{bind:  }{res}{res}Occupation{p_end}
+{p 0 48}{bind:union          }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:unionlbl }{bind:  }{res}{res}Union worker{p_end}
+{p 0 48}{bind:wage           }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Hourly wage{p_end}
+{p 0 48}{bind:hours          }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Usual hours worked{p_end}
+{p 0 48}{bind:ttl_exp        }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Total work experience (years){p_end}
+{p 0 48}{bind:tenure         }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Job tenure (years){p_end}
+{txt}{hline}
+Sorted by: {res}idcode
+
+{com}. tab race 
+
+       {txt}Race {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+      White {c |}{res}      1,637       72.89       72.89
+{txt}      Black {c |}{res}        583       25.96       98.84
+{txt}      Other {c |}{res}         26        1.16      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}      2,246      100.00
+
+{com}. tab race occupation 
+
+           {txt}{c |}                                                        Occupation
+      Race {c |} Professio  Managers/      Sales  Clerical/  Craftsmen  Operative  Transport   Laborers    Farmers  Farm labo    Service {c |}     Total
+{hline 11}{c +}{hline 121}{c +}{hline 10}
+     White {c |}{res}       249        231        548         90         34        125         12        177          1          3         10 {txt}{c |}{res}     1,629 
+{txt}     Black {c |}{res}        60         31        170         12         19        118         16        104          0          6          6 {txt}{c |}{res}       582 
+{txt}     Other {c |}{res}         8          2          8          0          0          3          0          5          0          0          0 {txt}{c |}{res}        26 
+{txt}{hline 11}{c +}{hline 121}{c +}{hline 10}
+     Total {c |}{res}       317        264        726        102         53        246         28        286          1          9         16 {txt}{c |}{res}     2,237 
+
+
+           {txt}{c |}      Occupation
+      Race {c |} Household      Other {c |}     Total
+{hline 11}{c +}{hline 22}{c +}{hline 10}
+     White {c |}{res}         2        147 {txt}{c |}{res}     1,629 
+{txt}     Black {c |}{res}         0         40 {txt}{c |}{res}       582 
+{txt}     Other {c |}{res}         0          0 {txt}{c |}{res}        26 
+{txt}{hline 11}{c +}{hline 22}{c +}{hline 10}
+     Total {c |}{res}         2        187 {txt}{c |}{res}     2,237 
+
+{com}. desc
+
+{txt}Contains data from {res}rawdata.dta
+{txt} Observations:{res}         2,246                  NLSW, 1988 extract
+{txt}    Variables:{res}            16                  3 Apr 2025 15:48
+                                              (_dta has notes)
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:idcode         }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}NLS ID{p_end}
+{p 0 48}{bind:age            }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Age in current year{p_end}
+{p 0 48}{bind:race           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:racelbl  }{bind:  }{res}{res}Race{p_end}
+{p 0 48}{bind:married        }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:marlbl   }{bind:  }{res}{res}Married{p_end}
+{p 0 48}{bind:never_married  }{txt}{bind: byte    }{bind:%16.0g    }{space 1}{bind:nev_mar  }{bind:  }{res}{res}Never married{p_end}
+{p 0 48}{bind:educ           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Current grade completed{p_end}
+{p 0 48}{bind:south          }{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:southlbl }{bind:  }{res}{res}Lives in the south{p_end}
+{p 0 48}{bind:smsa           }{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:smsalbl  }{bind:  }{res}{res}Lives in SMSA{p_end}
+{p 0 48}{bind:c_city         }{txt}{bind: byte    }{bind:%16.0g    }{space 1}{bind:ccitylbl }{bind:  }{res}{res}Lives in a central city{p_end}
+{p 0 48}{bind:industry       }{txt}{bind: byte    }{bind:%23.0g    }{space 1}{bind:indlbl   }{bind:  }{res}{res}Industry{p_end}
+{p 0 48}{bind:occupation     }{txt}{bind: byte    }{bind:%22.0g    }{space 1}{bind:occlbl   }{bind:  }{res}{res}Occupation{p_end}
+{p 0 48}{bind:union          }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:unionlbl }{bind:  }{res}{res}Union worker{p_end}
+{p 0 48}{bind:wage           }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Hourly wage{p_end}
+{p 0 48}{bind:hours          }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Usual hours worked{p_end}
+{p 0 48}{bind:ttl_exp        }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Total work experience (years){p_end}
+{p 0 48}{bind:tenure         }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Job tenure (years){p_end}
+{txt}{hline}
+Sorted by: {res}idcode
+
+{com}. br
+
+. summ wage 
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 8}wage {c |}{res}      2,246    7.766949    5.755523   1.004952   40.74659
+
+{com}. summ wage, d
+
+                         {txt}Hourly wage
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res} 1.930993       1.004952
+{txt} 5%    {res} 2.801002       1.032247
+{txt}10%    {res} 3.220612       1.151368       {txt}Obs         {res}      2,246
+{txt}25%    {res} 4.259257       1.344605       {txt}Sum of wgt. {res}      2,246
+
+{txt}50%    {res}  6.27227                      {txt}Mean          {res} 7.766949
+                        {txt}Largest       Std. dev.     {res} 5.755523
+{txt}75%    {res} 9.597424       40.19808
+{txt}90%    {res} 12.77777       40.19808       {txt}Variance      {res} 33.12604
+{txt}95%    {res} 16.52979       40.19808       {txt}Skewness      {res} 3.096199
+{txt}99%    {res} 38.70926       40.74659       {txt}Kurtosis      {res} 15.85446
+
+{com}. gen lwage = log(wage)
+
+. desc
+
+{txt}Contains data from {res}rawdata.dta
+{txt} Observations:{res}         2,246                  NLSW, 1988 extract
+{txt}    Variables:{res}            17                  3 Apr 2025 15:48
+                                              (_dta has notes)
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:idcode         }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}NLS ID{p_end}
+{p 0 48}{bind:age            }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Age in current year{p_end}
+{p 0 48}{bind:race           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:racelbl  }{bind:  }{res}{res}Race{p_end}
+{p 0 48}{bind:married        }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:marlbl   }{bind:  }{res}{res}Married{p_end}
+{p 0 48}{bind:never_married  }{txt}{bind: byte    }{bind:%16.0g    }{space 1}{bind:nev_mar  }{bind:  }{res}{res}Never married{p_end}
+{p 0 48}{bind:educ           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Current grade completed{p_end}
+{p 0 48}{bind:south          }{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:southlbl }{bind:  }{res}{res}Lives in the south{p_end}
+{p 0 48}{bind:smsa           }{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:smsalbl  }{bind:  }{res}{res}Lives in SMSA{p_end}
+{p 0 48}{bind:c_city         }{txt}{bind: byte    }{bind:%16.0g    }{space 1}{bind:ccitylbl }{bind:  }{res}{res}Lives in a central city{p_end}
+{p 0 48}{bind:industry       }{txt}{bind: byte    }{bind:%23.0g    }{space 1}{bind:indlbl   }{bind:  }{res}{res}Industry{p_end}
+{p 0 48}{bind:occupation     }{txt}{bind: byte    }{bind:%22.0g    }{space 1}{bind:occlbl   }{bind:  }{res}{res}Occupation{p_end}
+{p 0 48}{bind:union          }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:unionlbl }{bind:  }{res}{res}Union worker{p_end}
+{p 0 48}{bind:wage           }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Hourly wage{p_end}
+{p 0 48}{bind:hours          }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Usual hours worked{p_end}
+{p 0 48}{bind:ttl_exp        }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Total work experience (years){p_end}
+{p 0 48}{bind:tenure         }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Job tenure (years){p_end}
+{p 0 48}{bind:lwage          }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{txt}{hline}
+Sorted by: {res}idcode
+{txt}     Note: {res}Dataset has changed since last saved.
+
+{com}. br lwage 
+
+. summ lwage 
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 7}lwage {c |}{res}      2,246    1.868645      .57458   .0049396   3.707372
+
+{com}. br
+
+. drop lwage 
+
+. ls
+
+{res}total 5400
+-rw-r--r--   1 vaidehiparameswaran  staff      330 Apr  4 09:56 TA1.log
+-rw-r--r--   1 vaidehiparameswaran  staff    22335 Apr  4 10:04 TA1.txt
+-rw-r--r--@  1 vaidehiparameswaran  staff  2629373 Apr  4 09:18 TA1_slides.pdf
+-rw-r--r--@  1 vaidehiparameswaran  staff    24959 Apr  3 16:03 TA1_slides.tex
+-rw-r--r--@  1 vaidehiparameswaran  staff     2176 Apr  3 16:00 example.do
+drwxr-xr-x  14 vaidehiparameswaran  staff      448 Apr  1 11:10 inputs/
+drwxr-xr-x   4 vaidehiparameswaran  staff      128 Apr  3 16:01 output/
+-rw-r--r--@  1 vaidehiparameswaran  staff    73347 Apr  3 15:48 rawdata.dta
+
+{com}. desc
+
+{txt}Contains data from {res}rawdata.dta
+{txt} Observations:{res}         2,246                  NLSW, 1988 extract
+{txt}    Variables:{res}            16                  3 Apr 2025 15:48
+                                              (_dta has notes)
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:idcode         }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}NLS ID{p_end}
+{p 0 48}{bind:age            }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Age in current year{p_end}
+{p 0 48}{bind:race           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:racelbl  }{bind:  }{res}{res}Race{p_end}
+{p 0 48}{bind:married        }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:marlbl   }{bind:  }{res}{res}Married{p_end}
+{p 0 48}{bind:never_married  }{txt}{bind: byte    }{bind:%16.0g    }{space 1}{bind:nev_mar  }{bind:  }{res}{res}Never married{p_end}
+{p 0 48}{bind:educ           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Current grade completed{p_end}
+{p 0 48}{bind:south          }{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:southlbl }{bind:  }{res}{res}Lives in the south{p_end}
+{p 0 48}{bind:smsa           }{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:smsalbl  }{bind:  }{res}{res}Lives in SMSA{p_end}
+{p 0 48}{bind:c_city         }{txt}{bind: byte    }{bind:%16.0g    }{space 1}{bind:ccitylbl }{bind:  }{res}{res}Lives in a central city{p_end}
+{p 0 48}{bind:industry       }{txt}{bind: byte    }{bind:%23.0g    }{space 1}{bind:indlbl   }{bind:  }{res}{res}Industry{p_end}
+{p 0 48}{bind:occupation     }{txt}{bind: byte    }{bind:%22.0g    }{space 1}{bind:occlbl   }{bind:  }{res}{res}Occupation{p_end}
+{p 0 48}{bind:union          }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:unionlbl }{bind:  }{res}{res}Union worker{p_end}
+{p 0 48}{bind:wage           }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Hourly wage{p_end}
+{p 0 48}{bind:hours          }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Usual hours worked{p_end}
+{p 0 48}{bind:ttl_exp        }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Total work experience (years){p_end}
+{p 0 48}{bind:tenure         }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Job tenure (years){p_end}
+{txt}{hline}
+Sorted by: {res}idcode
+{txt}     Note: {res}Dataset has changed since last saved.
+
+{com}. gen lwage = log(wage) if educ >= 13
+{txt}(1,277 missing values generated)
+
+{com}. br 
+
+. replace lwage = log(wage) if educ < 13
+{txt}(1,277 real changes made)
+
+{com}. label var lwage "log wages"
+
+. desc
+
+{txt}Contains data from {res}rawdata.dta
+{txt} Observations:{res}         2,246                  NLSW, 1988 extract
+{txt}    Variables:{res}            17                  3 Apr 2025 15:48
+                                              (_dta has notes)
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:idcode         }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}NLS ID{p_end}
+{p 0 48}{bind:age            }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Age in current year{p_end}
+{p 0 48}{bind:race           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:racelbl  }{bind:  }{res}{res}Race{p_end}
+{p 0 48}{bind:married        }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:marlbl   }{bind:  }{res}{res}Married{p_end}
+{p 0 48}{bind:never_married  }{txt}{bind: byte    }{bind:%16.0g    }{space 1}{bind:nev_mar  }{bind:  }{res}{res}Never married{p_end}
+{p 0 48}{bind:educ           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Current grade completed{p_end}
+{p 0 48}{bind:south          }{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:southlbl }{bind:  }{res}{res}Lives in the south{p_end}
+{p 0 48}{bind:smsa           }{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:smsalbl  }{bind:  }{res}{res}Lives in SMSA{p_end}
+{p 0 48}{bind:c_city         }{txt}{bind: byte    }{bind:%16.0g    }{space 1}{bind:ccitylbl }{bind:  }{res}{res}Lives in a central city{p_end}
+{p 0 48}{bind:industry       }{txt}{bind: byte    }{bind:%23.0g    }{space 1}{bind:indlbl   }{bind:  }{res}{res}Industry{p_end}
+{p 0 48}{bind:occupation     }{txt}{bind: byte    }{bind:%22.0g    }{space 1}{bind:occlbl   }{bind:  }{res}{res}Occupation{p_end}
+{p 0 48}{bind:union          }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:unionlbl }{bind:  }{res}{res}Union worker{p_end}
+{p 0 48}{bind:wage           }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Hourly wage{p_end}
+{p 0 48}{bind:hours          }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Usual hours worked{p_end}
+{p 0 48}{bind:ttl_exp        }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Total work experience (years){p_end}
+{p 0 48}{bind:tenure         }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Job tenure (years){p_end}
+{p 0 48}{bind:lwage          }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}log wages{p_end}
+{txt}{hline}
+Sorted by: {res}idcode
+{txt}     Note: {res}Dataset has changed since last saved.
+
+{com}. cap mkdir output
+
+. ls
+
+{res}total 5408
+-rw-r--r--   1 vaidehiparameswaran  staff      330 Apr  4 09:56 TA1.log
+-rw-r--r--   1 vaidehiparameswaran  staff    28589 Apr  4 10:09 TA1.txt
+-rw-r--r--@  1 vaidehiparameswaran  staff  2629373 Apr  4 09:18 TA1_slides.pdf
+-rw-r--r--@  1 vaidehiparameswaran  staff    24959 Apr  3 16:03 TA1_slides.tex
+-rw-r--r--@  1 vaidehiparameswaran  staff     2176 Apr  3 16:00 example.do
+drwxr-xr-x  14 vaidehiparameswaran  staff      448 Apr  1 11:10 inputs/
+drwxr-xr-x   4 vaidehiparameswaran  staff      128 Apr  3 16:01 output/
+-rw-r--r--@  1 vaidehiparameswaran  staff    73347 Apr  3 15:48 rawdata.dta
+
+{com}. save "output/nls88.dta", replace
+{txt}{p 0 4 2}
+file {bf}
+output/nls88.dta{rm}
+saved
+{p_end}
+
+{com}. do "/var/folders/9k/515lz6q12z393yv6qthby0gm0000gn/T//SD38858.000000"
+{txt}
+{com}. twoway (scatter lwage ttl_exp, msize(vsmall) mcol(blue)) ///
+>     (lfit lwage ttl_exp, lcolor(red) lwidth(medium) ///
+>     xtitle("Total Experience") ytitle("Log Hourly Wage") ///
+>     title("Scatterplot of Log Hourly Wage and Total Experience"))
+{res}{txt}
+{com}. // other usual options: title, note, legend, xlabel, ylabel, xline, yline, etc.
+. 
+{txt}end of do-file
+
+{com}. desc
+
+{txt}Contains data from {res}output/nls88.dta
+{txt} Observations:{res}         2,246                  NLSW, 1988 extract
+{txt}    Variables:{res}            17                  4 Apr 2025 10:10
+                                              (_dta has notes)
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:idcode         }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}NLS ID{p_end}
+{p 0 48}{bind:age            }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Age in current year{p_end}
+{p 0 48}{bind:race           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:racelbl  }{bind:  }{res}{res}Race{p_end}
+{p 0 48}{bind:married        }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:marlbl   }{bind:  }{res}{res}Married{p_end}
+{p 0 48}{bind:never_married  }{txt}{bind: byte    }{bind:%16.0g    }{space 1}{bind:nev_mar  }{bind:  }{res}{res}Never married{p_end}
+{p 0 48}{bind:educ           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Current grade completed{p_end}
+{p 0 48}{bind:south          }{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:southlbl }{bind:  }{res}{res}Lives in the south{p_end}
+{p 0 48}{bind:smsa           }{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:smsalbl  }{bind:  }{res}{res}Lives in SMSA{p_end}
+{p 0 48}{bind:c_city         }{txt}{bind: byte    }{bind:%16.0g    }{space 1}{bind:ccitylbl }{bind:  }{res}{res}Lives in a central city{p_end}
+{p 0 48}{bind:industry       }{txt}{bind: byte    }{bind:%23.0g    }{space 1}{bind:indlbl   }{bind:  }{res}{res}Industry{p_end}
+{p 0 48}{bind:occupation     }{txt}{bind: byte    }{bind:%22.0g    }{space 1}{bind:occlbl   }{bind:  }{res}{res}Occupation{p_end}
+{p 0 48}{bind:union          }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:unionlbl }{bind:  }{res}{res}Union worker{p_end}
+{p 0 48}{bind:wage           }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Hourly wage{p_end}
+{p 0 48}{bind:hours          }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Usual hours worked{p_end}
+{p 0 48}{bind:ttl_exp        }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Total work experience (years){p_end}
+{p 0 48}{bind:tenure         }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Job tenure (years){p_end}
+{p 0 48}{bind:lwage          }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}log wages{p_end}
+{txt}{hline}
+Sorted by: {res}idcode
+
+{com}. hist race 
+{txt}(bin={res}33{txt}, start={res}1{txt}, width={res}.06060606{txt})
+{res}
+{com}. kdensity lwage 
+{res}
+{com}. reg lwage age educ ttl_exp 
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     2,244
+{txt}{hline 13}{c +}{hline 34}   F(3, 2240)      = {res}   277.64
+{txt}       Model {c |} {res} 200.836661         3  66.9455538   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 540.126138     2,240   .24112774   {txt}R-squared       ={res}    0.2710
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2701
+{txt}       Total {c |} {res} 740.962799     2,243  .330344538   {txt}Root MSE        =   {res} .49105
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       lwage{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}age {c |}{col 14}{res}{space 2} -.009497{col 26}{space 2}   .00342{col 37}{space 1}   -2.78{col 46}{space 3}0.006{col 54}{space 4}-.0162037{col 67}{space 3}-.0027903
+{txt}{space 8}educ {c |}{col 14}{res}{space 2} .0798806{col 26}{space 2}  .004203{col 37}{space 1}   19.01{col 46}{space 3}0.000{col 54}{space 4} .0716384{col 67}{space 3} .0881228
+{txt}{space 5}ttl_exp {c |}{col 14}{res}{space 2} .0401631{col 26}{space 2} .0023148{col 37}{space 1}   17.35{col 46}{space 3}0.000{col 54}{space 4} .0356238{col 67}{space 3} .0447025
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .6909684{col 26}{space 2} .1452393{col 37}{space 1}    4.76{col 46}{space 3}0.000{col 54}{space 4} .4061508{col 67}{space 3}  .975786
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg lwage age educ ttl_exp tenure industry 
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     2,215
+{txt}{hline 13}{c +}{hline 34}   F(5, 2209)      = {res}   169.88
+{txt}       Model {c |} {res} 201.454715         5   40.290943   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 523.915707     2,209  .237173249   {txt}R-squared       ={res}    0.2777
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2761
+{txt}       Total {c |} {res} 725.370422     2,214  .327628917   {txt}Root MSE        =   {res}   .487
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       lwage{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}age {c |}{col 14}{res}{space 2}-.0094087{col 26}{space 2} .0034133{col 37}{space 1}   -2.76{col 46}{space 3}0.006{col 54}{space 4}-.0161023{col 67}{space 3}-.0027151
+{txt}{space 8}educ {c |}{col 14}{res}{space 2} .0832662{col 26}{space 2} .0044198{col 37}{space 1}   18.84{col 46}{space 3}0.000{col 54}{space 4} .0745988{col 67}{space 3} .0919337
+{txt}{space 5}ttl_exp {c |}{col 14}{res}{space 2} .0304728{col 26}{space 2}  .002817{col 37}{space 1}   10.82{col 46}{space 3}0.000{col 54}{space 4} .0249485{col 67}{space 3} .0359972
+{txt}{space 6}tenure {c |}{col 14}{res}{space 2} .0121906{col 26}{space 2} .0022996{col 37}{space 1}    5.30{col 46}{space 3}0.000{col 54}{space 4} .0076809{col 67}{space 3} .0167002
+{txt}{space 4}industry {c |}{col 14}{res}{space 2}-.0089109{col 26}{space 2} .0036229{col 37}{space 1}   -2.46{col 46}{space 3}0.014{col 54}{space 4}-.0160156{col 67}{space 3}-.0018062
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}  .769163{col 26}{space 2} .1451852{col 37}{space 1}    5.30{col 46}{space 3}0.000{col 54}{space 4} .4844492{col 67}{space 3} 1.053877
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg lwage age educ ttl_exp, r
+
+{txt}Linear regression                               Number of obs     = {res}     2,244
+                                                {txt}F(3, 2240)        =  {res}   289.15
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.2710
+                                                {txt}Root MSE          =    {res} .49105
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}       lwage{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}age {c |}{col 14}{res}{space 2} -.009497{col 26}{space 2} .0034063{col 37}{space 1}   -2.79{col 46}{space 3}0.005{col 54}{space 4}-.0161769{col 67}{space 3}-.0028171
+{txt}{space 8}educ {c |}{col 14}{res}{space 2} .0798806{col 26}{space 2} .0042657{col 37}{space 1}   18.73{col 46}{space 3}0.000{col 54}{space 4} .0715155{col 67}{space 3} .0882457
+{txt}{space 5}ttl_exp {c |}{col 14}{res}{space 2} .0401631{col 26}{space 2} .0022606{col 37}{space 1}   17.77{col 46}{space 3}0.000{col 54}{space 4} .0357301{col 67}{space 3} .0445962
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .6909684{col 26}{space 2} .1487647{col 37}{space 1}    4.64{col 46}{space 3}0.000{col 54}{space 4} .3992374{col 67}{space 3} .9826994
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. gen collgrad = 1 if educ >= 13
+{txt}(1,277 missing values generated)
+
+{com}. replace collgrad = 0 if educ < 13
+{txt}(1,277 real changes made)
+
+{com}. br 
+
+. gen collgrad2 = (educ >= 13)
+
+. br
+
+. reg lwage collgrad 
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     2,246
+{txt}{hline 13}{c +}{hline 34}   F(1, 2244)      = {res}   366.15
+{txt}       Model {c |} {res} 103.971325         1  103.971325   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 637.197784     2,244  .283956232   {txt}R-squared       ={res}    0.1403
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1399
+{txt}       Total {c |} {res} 741.169109     2,245  .330142142   {txt}Root MSE        =   {res} .53288
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       lwage{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 4}collgrad {c |}{col 14}{res}{space 2} .4344145{col 26}{space 2} .0227025{col 37}{space 1}   19.14{col 46}{space 3}0.000{col 54}{space 4} .3898945{col 67}{space 3} .4789346
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 1.681224{col 26}{space 2} .0149118{col 37}{space 1}  112.74{col 46}{space 3}0.000{col 54}{space 4} 1.651982{col 67}{space 3} 1.710466
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. summ lwage if collgrad == 1
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 7}lwage {c |}{res}        969    2.115638    .5608235   .0317383   3.707372
+
+{com}. summ lwage if collgrad == 0
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 7}lwage {c |}{res}      1,277    1.681224    .5106541   .0049396   3.693819
+
+{com}. di 2.115638 - 1.681224
+{res}.434414
+
+{com}. do "/Users/vaidehiparameswaran/Desktop/teaching/econ326-sp/slides/TA1/example.do"
+{txt}
+{com}. /* 
+> it's good to start with a header block that describes what you're doing in this do file:
+> description: example do file for TA session 1 of econ 326 
+> author: vaidehi
+> date written: Apr 3, 2025
+> last modified: Apr 3, 2025 
+> */
+. 
+. * preamble at the start of a do file
+. clear all
+{res}{txt}
+{com}. pwd // print current working directory 
+{res}/Users/vaidehiparameswaran/Desktop/teaching/econ326-sp/slides/TA1
+{txt}
+{com}. cd "/Users/vaidehiparameswaran/Desktop/teaching/econ326-sp/slides/TA1" // change directory to this path
+{res}/Users/vaidehiparameswaran/Desktop/teaching/econ326-sp/slides/TA1
+{txt}
+{com}. cap log close
+{smcl}
+{com}{sf}{ul off}

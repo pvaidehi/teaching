@@ -1,0 +1,292 @@
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /Users/vaidehiparameswaran/Desktop/second-year-coursework/econ326/slides/TA2/datasets/TA2.log
+  log type:  text
+ opened on:  17 Jan 2025, 11:41:20
+
+. 
+. use "02_round1_baseline_childlevel.dta", clear
+
+. 
+. desc
+
+Contains data from 02_round1_baseline_childlevel.dta
+ Observations:        15,340                  
+    Variables:             4                  14 Sep 2020 02:50
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+childid         double  %9.0g                 Child level unique identifier
+r1_bas_waz06    double  %10.0g                Weight-for-age Z-score
+r1_bas_haz06    double  %10.0g                Height-for-age Z-score
+r1_bas_cage_m~s double  %10.0g                Child's age in months at the time of interview
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Sorted by: childid
+
+. isid childid 
+
+. br
+
+. use "03_round2_midline_childlevel.dta", clear
+
+. 
+. desc
+
+Contains data from 03_round2_midline_childlevel.dta
+ Observations:        20,934                  
+    Variables:             4                  14 Sep 2020 02:50
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+childid         double  %9.0g                 Child level unique identifier
+r2_mid_waz06    double  %10.0g                Weight-for-age Z-score
+r2_mid_haz06    double  %10.0g                Height-for-age Z-score
+r2_mid_cage_m~s double  %10.0g                Child's age in months at the time of interview
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Sorted by: childid
+
+. isid childid 
+
+. use "02_round1_baseline_childlevel.dta", clear
+
+. 
+. merge 1:1 childid using 03_round2_midline_childlevel.dta
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                         5,594
+        from master                         0  (_merge==1)
+        from using                      5,594  (_merge==2)
+
+    Matched                            15,340  (_merge==3)
+    -----------------------------------------
+
+. desc
+
+Contains data from 02_round1_baseline_childlevel.dta
+ Observations:        20,934                  
+    Variables:             8                  14 Sep 2020 02:50
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+childid         double  %9.0g                 Child level unique identifier
+r1_bas_waz06    double  %10.0g                Weight-for-age Z-score
+r1_bas_haz06    double  %10.0g                Height-for-age Z-score
+r1_bas_cage_m~s double  %10.0g                Child's age in months at the time of interview
+r2_mid_waz06    double  %10.0g                Weight-for-age Z-score
+r2_mid_haz06    double  %10.0g                Height-for-age Z-score
+r2_mid_cage_m~s double  %10.0g                Child's age in months at the time of interview
+_merge          byte    %23.0g     _merge     Matching result from merge
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Sorted by: 
+     Note: Dataset has changed since last saved.
+
+. tab _m
+
+   Matching result from |
+                  merge |      Freq.     Percent        Cum.
+------------------------+-----------------------------------
+         Using only (2) |      5,594       26.72       26.72
+            Matched (3) |     15,340       73.28      100.00
+------------------------+-----------------------------------
+                  Total |     20,934      100.00
+
+. br if _m ==2 
+
+. use "02_round1_baseline_childlevel.dta", clear
+
+. merge 1:1 childid using "03_round2_midline_childlevel.dta", assert(match)
+after merge, not all observations matched
+(merged result left in memory)
+r(9);
+
+. use "02_round1_baseline_childlevel.dta", clear
+
+. merge 1:1 childid using "03_round2_midline_childlevel.dta", assert(using match)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                         5,594
+        from master                         0  (_merge==1)
+        from using                      5,594  (_merge==2)
+
+    Matched                            15,340  (_merge==3)
+    -----------------------------------------
+
+. use "02_round1_baseline_childlevel.dta", clear
+
+. merge 1:1 childid using "03_round2_midline_childlevel.dta", keep(match)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                            15,340  (_merge==3)
+    -----------------------------------------
+
+. tab _m
+
+   Matching result from |
+                  merge |      Freq.     Percent        Cum.
+------------------------+-----------------------------------
+            Matched (3) |     15,340      100.00      100.00
+------------------------+-----------------------------------
+                  Total |     15,340      100.00
+
+. 
+. use "02_round1_baseline_childlevel.dta", clear
+
+. merge 1:1 childid using "03_round2_midline_childlevel.dta", keep(using)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                         5,594
+        from master                         0  (_merge==1)
+        from using                      5,594  (_merge==2)
+
+    Matched                                 0  (_merge==3)
+    -----------------------------------------
+
+. tab _m
+
+   Matching result from |
+                  merge |      Freq.     Percent        Cum.
+------------------------+-----------------------------------
+         Using only (2) |      5,594      100.00      100.00
+------------------------+-----------------------------------
+                  Total |      5,594      100.00
+
+. 
+. use "02_round1_baseline_childlevel.dta", clear
+
+. merge 1:1 childid using "03_round2_midline_childlevel.dta", keep(match using)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                         5,594
+        from master                         0  (_merge==1)
+        from using                      5,594  (_merge==2)
+
+    Matched                            15,340  (_merge==3)
+    -----------------------------------------
+
+. tab _m
+
+   Matching result from |
+                  merge |      Freq.     Percent        Cum.
+------------------------+-----------------------------------
+         Using only (2) |      5,594       26.72       26.72
+            Matched (3) |     15,340       73.28      100.00
+------------------------+-----------------------------------
+                  Total |     20,934      100.00
+
+. 
+. use "02_round1_baseline_childlevel.dta", clear
+
+. merge 1:1 childid using "03_round2_midline_childlevel.dta", nogen
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                         5,594
+        from master                         0  
+        from using                      5,594  
+
+    Matched                            15,340  
+    -----------------------------------------
+
+. 
+. tab _m
+variable _m not found
+r(111);
+
+. use "stops.dta", clear 
+
+. desc
+
+Contains data from stops.dta
+ Observations:        10,000                  
+    Variables:            22                  17 Jan 2025 10:32
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ha_n_first_drvr str25   %25s                  driver first name
+ha_n_middle_d~r str30   %30s                  driver middle name
+ha_n_last_drvr  str30   %30s                  driver last name
+ha_race_sex     str2    %9s                   race/ethnicity/gender
+ha_a_address_~r str50   %50s                  driver address street
+ha_a_city_drvr  str30   %30s                  driver address city
+ha_a_state_drvr str2    %9s                   driver address state
+ha_a_zip_drvr   str10   %10s                  driver address zip code
+ha_comm_vehicle byte    %8.0g                 commercial motor vehicle
+ha_veh_make     str20   %20s                  vehicle make
+ha_veh_model    str34   %34s                  vehicle model
+ha_vehicle_type str2    %9s                   vehicle body type
+ha_veh_year     int     %8.0g                 vehicle year
+ha_arrest_date  str17   %17s                  offense date
+ha_month        byte    %8.0g                 month
+ha_year         int     %8.0g                 year
+ha_day_of_week  byte    %8.0g                 day of week
+ha_qtr_day      byte    %8.0g                 quarter of day (time)
+ha_county       int     %8.0g                 county
+ha_service      str2    %9s                   dps service
+ha_district     str1    %9s                   dps district
+ha_region       byte    %8.0g                 dps region
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Sorted by: 
+
+. isid ha_county 
+variable ha_county does not uniquely identify the observations
+r(459);
+
+. use "counties.dta", clear
+
+. desc
+
+Contains data from counties.dta
+ Observations:           254                  
+    Variables:             3                  17 Jan 2025 10:33
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ha_countyname   str20   %20s                  
+county_fips     long    %12.0g                
+ha_county       float   %9.0g                 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Sorted by: ha_countyname
+
+. isid ha_county 
+
+. use "stops.dta", clear 
+
+. merge m:1 ha_county using "counties.dta"
+(variable ha_county was int, now float to accommodate using data's values)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                            39
+        from master                         0  (_merge==1)
+        from using                         39  (_merge==2)
+
+    Matched                            10,000  (_merge==3)
+    -----------------------------------------
+
+. br
+
+. use "stops.dta", clear 
+
+. merge m:1 ha_county using "counties.dta", assert(match using) 
+(variable ha_county was int, now float to accommodate using data's values)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                            39
+        from master                         0  (_merge==1)
+        from using                         39  (_merge==2)
+
+    Matched                            10,000  (_merge==3)
+    -----------------------------------------
+
