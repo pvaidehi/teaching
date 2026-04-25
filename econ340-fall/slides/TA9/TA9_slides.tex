@@ -1,344 +1,575 @@
 \documentclass[11pt,notes=hide,aspectratio=169,mathserif]{beamer}
 
-% PACKAGES
-\usepackage{graphics}  % Support for images/figures
-\usepackage{graphicx}  % Includes the \resizebox command
-\usepackage{tikz}      % For flowcharts
-\usetikzlibrary{arrows.meta, positioning} % Libraries for TikZ
-
-
-\usepackage{url}	   % Includes \urldef and \url commands
-\usepackage{natbib}
-\usepackage{bibentry}  % Includes the \nobibliography command
-\usepackage{verbatim}  %Supports comments
-\usepackage{booktabs} %Supports \toprule, \bottomrule, etc in tables
-\usepackage{etoolbox}  %Supports toggle commands
+% ================= PREAMBLE (matches your style) =================
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{url}
+%\usepackage{natbib}
+\usepackage{bibentry}
+\usepackage{verbatim}
+\usepackage{booktabs}
+\usepackage{etoolbox}
 \usepackage{datetime}
-\usepackage{bm}	%Supports bold math \bm
-%the LaTeX standard:
-\usepackage{cmbright}
-\setbeamerfont{frametitle}{family=\fontfamily{cmbr}\selectfont,size=\Large}
-\fontencoding{OT1}\fontfamily{cmbr}\selectfont
-
-% PACKAGES (that should already be included by your LyX document settings)
-\usepackage{amsfonts}  % Lots of stuff, including \mathbb 
-\usepackage{amsmath}   % Standard math package
-\usepackage{amsthm}    % Includes the comment functions
+\usepackage{bm}
 \usepackage{subcaption}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
 
-% CUSTOM DEFINITIONS
-\def\newblock{} %Get beamer to cooperate with BibTeX
+\def\newblock{}
 \linespread{1.2}
 
-% IDENTIFYING INFORMATION
-\title[class]{ECON 326: Economics of Developing Countries \\ TA Session 9}
-\author[vaidehi's class ]{Vaidehi Parameswaran (Northwestern Econ)}
+\title[class]{ECON 340: Economics of the Family \\ TA Session 9}
+\author[Vaidehi's class]{Vaidehi Parameswaran (Northwestern Economics)}
 \date{\monthname[\the\month] \the\year}
 
-% THEMATIC OPTIONS
-%\setbeamercovered{transparent}
 \usetheme{metropolis}
-\definecolor{mycolor}{RGB}{0,153,153} % define cyan colour
-\setbeamercolor{frametitle}{bg=mycolor, fg=white} % Frame title color
-\setbeamercolor{title separator}{fg=mycolor} 
-\setbeamercolor{progress bar}{fg=mycolor} 
+\definecolor{mycolor}{RGB}{48,7,144}
+\setbeamercolor{frametitle}{bg=mycolor, fg=white}
+\setbeamercolor{title separator}{fg=mycolor}
+\setbeamercolor{progress bar}{fg=mycolor}
 \beamertemplatenavigationsymbolsempty
-%\setbeamertemplate{footline}[frame number]{}
+\setbeamertemplate{footline}[frame number]{}
 \setbeamertemplate{itemize item}{\small\raisebox{1pt}{\textcolor{mycolor}{$\blacktriangleright$}}}
 \setbeamertemplate{itemize subitem}{\footnotesize\raisebox{1pt}{\textcolor{mycolor}{$\triangleright$}}}
 \setbeamertemplate{itemize subsubitem}{\tiny\raisebox{1pt}{\textcolor{mycolor}{$\triangleright$}}}
 
-% BACKUP SLIDE NUMBERING
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=mycolor,
+  urlcolor=mycolor,
+  citecolor=mycolor
+}
+
 \usepackage{appendixnumberbeamer}
+\setbeamertemplate{section in toc}{%
+  \leavevmode\llap{\textcolor{mycolor}{$\blacktriangleright$}\hspace{0.6ex}}%
+  \inserttocsection\par}
+\setbeamertemplate{subsection in toc}{%
+  \leavevmode\llap{\textcolor{mycolor}{$\triangleright$}\hspace{1.1ex}}%
+  \inserttocsubsection\par}
+
+\AtBeginSection[]{
+  \begin{frame}{Today}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
 
 \begin{document}
 
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 \begin{frame}[plain]
 \titlepage
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
 
-%---------------------------------------------------------------------
-\begin{frame}{Today's Agenda}
+\section{The Gender Wage Gap and Domestic Violence}
 
+% ---------------------------------------------------------------
+\begin{frame}{Today's Paper}
+\small
+\textbf{Aizer (2010).} \emph{The Gender Wage Gap and Domestic Violence}. \textit{American Economic Review} \\[0.6em]
 \begin{itemize}
-\item \href{https://www.lse.ac.uk/economics/Assets/Documents/personal-pages/robin-burgess/the-brazilian-amazons-double-reversal-of-fortune-manuscript.pdf}{\textcolor{blue}{Burgess et al. (2019)}}
-\item The Curse of Natural Resources
-\item Practice final
+  \item \textbf{Question:} Does narrowing the male--female wage gap reduce intimate partner violence (IPV)?
+  \item \textbf{Key challenges:}
+    \begin{itemize}
+        \item Reverse causality
+        \item Omitted variable bias
+    \end{itemize}
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-
-\section*{\href{https://www.lse.ac.uk/economics/Assets/Documents/personal-pages/robin-burgess/the-brazilian-amazons-double-reversal-of-fortune-manuscript.pdf}{\textcolor{blue}{Burgess et al. (2019)}} \\[5mm] 
-\textnormal{\small{The Brazilian Amazon’s Double Reversal of Fortune}}}
-
-%---------------------------------------------------------------------
-\begin{frame}{Motivation}
+% ---------------------------------------------------------------
+\begin{frame}{Why We Care}
 \begin{itemize}
-\item Environmental damage entails an externality - a market failure 
-\item Requires government involvement to regulate or tax activity to correct this externality
-\item State capacity to effectively regulate is weak in many developing countries
-\item Political economy can be important 
+  \item Three-quarters of all violence against women is perpetrated by domestic partners.
+  \item Disproportionate incidence among poor women.
+  \item \$5.8 billion spent annually in the United States on medical care and productivity losses.
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
+\begin{frame}{Household Bargaining}
+\begin{itemize}
+  \item Increases in women's relative wages $\implies$ better outside options.
+  \item Improved outside options for women $\implies$ higher bargaining power $\implies$ lower IPV.
+  \item Alternative theories to test against:
+  \begin{itemize}
+    \item \textbf{Male backlash:} higher female earnings provoke more IPV.
+    \item \textbf{Exposure reduction:} more female work hours reduce time with partner, mechanically lowering IPV.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+
+% ---------------------------------------------------------------
+\begin{frame}{Identification}
+Two main challenges:
+\begin{itemize}
+\item Lack of objective measures of domestic violence collected consistently over time.\\
+\pause \textbf{Solution:} Construct a new measure of female hospitalizations for assault in California from 1990--2003 (not self-reported).
+\item Difficulty constructing measures of \emph{relative} labor market conditions that do not reflect the underlying characteristics of male and female workers (which could themselves be functions of violence or correlated unobservables such as education).\\
+\textbf{Solution:} Use the historical sex and race segregation of industries to construct county-level women’s wages based on \emph{national} wage changes in industries dominated by women.
+\item \[
+\overline{w_{grcy}} \;=\; \sum_{j} \gamma_{grcj}\, w_{-cyj}
+\]
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Regression Form \& Threats}
+\small
+\begin{equation}
+\text{DV}_{c y}
+\;=\;
+\alpha_{c}
+\;+\;
+\lambda_{y}
+\;+\;
+\beta_{1}\,\text{WageRatio}_{c y}
+\;+\;
+\beta_{2}\,\text{DV}_{c,\,y-1}
+\;+\;
+\mathbf{X}_{c y}^{\top}\delta
+\;+\;
+\varepsilon_{c y}.
+\end{equation}
+\begin{itemize}
+  \item \textbf{Key regressor:} local male--female \textbf{wage gap} (\texttt{WageRatio}); constructed using gender‑specific Bartik‑style demand shocks.
+  \item \textbf{Controls:} unemployment rate, violent \textbf{crime} rate, per‑capita income, race shares, population; plus \textbf{county} and \textbf{year} fixed effects.
+  \item \textbf{Exogeneity:} national industry wage growth (used in the Bartik) is plausibly exogenous to local IPV shocks, conditional on fixed effects and controls.
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+
+% ---------------------------------------------------------------
+\begin{frame}{Results}
+\small
+\begin{figure}
+\centering
+\includegraphics[width=0.75\linewidth]{inputs/fig1.png}
+\end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Results}
+\small
+\begin{figure}
+\centering
+\includegraphics[width=0.75\linewidth]{inputs/fig2.png}
+\end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Results}
+There seems to be no male backlash.
+\begin{figure}
+\centering
+\includegraphics[width=0.75\linewidth]{inputs/fig3.png}
+\end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Results}
+It's not about exposure reduction.
+\begin{figure}
+\centering
+\includegraphics[width=0.75\linewidth]{inputs/fig4.png}
+\end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Test that Relative Wages Matter}
+Relative wages (outside options) predict IPV; not simply absolute wages.
+\begin{figure}
+\centering
+\includegraphics[width=0.85\linewidth]{inputs/fig5.png}
+\end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{What Do We Learn?}
+\small
+\begin{itemize}
+  \item Narrowing the wage gap may have effects beyond equity and fairness—tangible health benefits.
+  \item Outside options likely matter.
+  \item Policy levers that raise women’s human capital, access to high‑wage sectors, and pay equity.
+  \item Intergenerational effects of these policies might be large.
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+
+
+
+\section{Intimate Partner Violence: The Influence of Job Opportunities for Men and Women}
+
+% ---------------------------------------------------------------
+\begin{frame}{A Global Perspective}
+\small
+\begin{itemize}
+  \item IPV is pervasive around the world.
+  \item Increasingly seen as a necessary component of the development agenda.
+  \item Generally higher in low‑income countries—about 65.6\% in Central Africa and 42\% in South Asia.
+  \item Serious effects on the physical and mental health of women, and on children.
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
 \begin{frame}{This Paper}
+\textbf{Bhalotra, Kambhampati, Rawlings \& Siddique (2021).} \emph{Intimate Partner Violence: The Influence of Job Opportunities for Men and Women}, \textit{World Bank Economic Review}
 \begin{itemize}
-\item Explore how national policies can exert regulatory control over conservation 
-\item Exploit what happens at international borders 
-\item One of the most important global ecosystems: the Amazon rainforest
-\begin{itemize}
-    \item The rate of deforestation will affect global warming
-    \item The Amazon is a global public good
-\end{itemize}
+  \item How does IPV vary with macroeconomic conditions?
+  \item In particular, male and female unemployment rates.
+  \item Compare data for 31 developing countries.
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{Strategy}
+% ---------------------------------------------------------------
+\begin{frame}{Why This Matters}
 \begin{itemize}
-\item Satellite data on deforestation - even across borers, from 2000 - 2018 
-\begin{itemize}
-\item High resolution - can zoom in for precise effects 
-\end{itemize}
-\item In 2006, Brazil introduced deforestation policies
-\item Spatial RDD design - popular strategy using borders for policy effects
+  \item Consider shocks to male and female unemployment.
+  \item Omitting either of these will bias estimates. Why?
+  \pause \item These shocks are likely correlated.
+  \item Important for policy: many interventions in developing countries aim to increase women's employment.
+  \item Ex ante unclear—male backlash may arise.
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{Satellite Data}
+% ---------------------------------------------------------------
+\begin{frame}{Data}
+\begin{itemize}
+  \item Individual data from the Demographic and Health Surveys (DHS).
+  \item Standardized surveys that are comparable across countries.
+  \item Survey design aims to minimize underreporting of IPV; reports are not observable to husbands.
+  \item Years 2005--2016, 31 countries.
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Unemployment Shocks}
+\begin{itemize}
+  \item Use time‑series methods to extract the cyclical component of unemployment rates.
+  \item Female and male shocks to unemployment are positively correlated.
+  \item But shocks to female unemployment are larger in magnitude.
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Incidence of Physical Violence}
 \begin{figure}
 \centering
-\includegraphics[width=0.4\textwidth]{../TA9/inputs/fig2.2.png}
+\includegraphics[width=0.75\linewidth]{inputs/fig6.png}
 \end{figure}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{Fact 1}
+% ---------------------------------------------------------------
+\begin{frame}{Regression Specification}
+\begin{itemize}
+  \item Equation:
+\begin{equation}
+\text{IPV}_{ijt} \;=\; \alpha \;+\; \beta_{1}\,U^{F}_{j, t-1} \;+\; \beta_{2}\,U^{M}_{j, t-1} \;+\; \mathbf{X}_{ict}^{\top}\delta \;+\; \gamma_{j} \;+\; \lambda_{t} \;+\; \varepsilon_{ijt}
+\end{equation}
+\item Variables of interest: detrended unemployment shocks $U^{M}, U^{F}$ lagged one period.
+\item Controls include education, urban location, age, religion, etc.
+\item Standard errors clustered at the country level.
+\item Note: This is panel OLS (associational), not a causal identification strategy.
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Regression Results}
+Holding the female unemployment rate constant, a 1\% rise in male unemployment is associated with a 0.5 p.p.\ increase in IPV.
 \begin{figure}
 \centering
-\includegraphics[width=0.6\textwidth]{../TA9/inputs/fig2.1.png}
+\includegraphics[width=0.75\linewidth]{inputs/fig7-1.png}
 \end{figure}
-\begin{itemize}
-\item Until 2005, deforestation level and rate significantly higher on the Brazilian side 
-\end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{Fact 1}
+% ---------------------------------------------------------------
+\begin{frame}{Regression Results}
+Holding the male unemployment rate constant, a 1\% rise in female unemployment is associated with a 0.52 p.p.\ \emph{decrease} in IPV.
 \begin{figure}
 \centering
-\includegraphics[width=0.56\textwidth]{../TA9/inputs/fig2.3.png}
-\end{figure}
-\begin{itemize}
-\item Deforestation is visually apparent: forest cover drops sharply exactly at the national border.
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-
-%---------------------------------------------------------------------
-\begin{frame}{Fact 2}
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth]{../TA9/inputs/fig_2006.png}
-\end{figure}
-\begin{itemize}
-\item Discontinuity in deforestation rates disappears in 2006 - the first reversal 
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{What happened in 2006?}
-\begin{itemize}
-\item In 2003, in the Lula government, Marina Silva appointed as Minister of Environment
-\item She was from the Amazon, and had a strong environmentalist stance
-\item Law that allowed satellite-based deforestation detection system (DETER) to become a key tool
-\item Sent in federal police and troops to arrest illegal loggers and confiscate their machinery
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Fact 3}
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth]{../TA9/inputs/fig_post.png}
-\end{figure}
-\begin{itemize}
-\item Positive effects relatively short-lived 
-\item Deforestation resumes growing in 2014 - the second reversal
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{What changed?}
-\begin{itemize}
-\item New government - gave amnesty to those engaged in illegal deforestation before 2008
-\item 2014 was a politically turbulent year
-\item Next president introduced laws that made it incentive-compatible for public land grabs
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{The Double Reversal}
-\begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{../TA9/inputs/reversal.png}
+\includegraphics[width=0.75\linewidth]{inputs/fig7-1.png}
 \end{figure}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{Fact 4}
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{../TA9/inputs/fig_land_use.png}
-\end{figure}
+% ---------------------------------------------------------------
+\begin{frame}{What Could Be Happening Here?}
 \begin{itemize}
-\item Land use restrictions matter 
-\item Protected areas have always been less deforested
+  \item Men react adversely to improvements in women's employment prospects, conditional on their own.
+  \item Consistent with male backlash.
+  \item When traditional gender roles are threatened, some men resort to violence to re‑establish authority.
+  \item This has been documented in studies beyond IPV.
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{Conclusion}
+% ---------------------------------------------------------------
+\begin{frame}{Heterogeneity by Access to Divorce}
+Striking separation by divorce rights—effects are driven by countries where divorce is difficult for women.
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.85\linewidth]{inputs/fig8.png}
+    \end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Robustness}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{inputs/fig9.png}
+    \end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Discussion (I)}
 \begin{itemize}
-\item Combined, these results demonstrate the reach of the Brazilian state to exploit or conserve its natural resources
-\item Suggest that rapid deforestation in early 2000s was a consequence of a pro-exploitation policy environment 
-\item Policy stance rapidly reversed in 2006-2013 with laws introduced 
-\item But the position stalled and reversed in the post-2013 period with economic and political crisis collided with weakened forest conservation laws 
-\item So state capacity does matter!
+  \item The paper finds a systematic association between unemployment rates and IPV.
+  \item An opposing pattern: IPV appears higher when men are unemployed and when women are employed (ceteris paribus).
+  \item This contrasts with Aizer (2010) (and much of the US/UK literature)—why?
+  \pause \item The US and the UK are settings where male‑breadwinner norms have weakened over time.
+  \item Women are also better able to exit relationships.
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-\section*{The Curse of Natural Resources}
-
-%---------------------------------------------------------------------
-\begin{frame}{What is it?}
-
+% ---------------------------------------------------------------
+\begin{frame}{Discussion (II)}
 \begin{itemize}
-\item The observation that countries rich in natural resources tend to perform badly
-\item Also called the paradox of plenty or the resource curse
-\item Sachs and Warner maybe the first to document this using econometrics in a paper in 1995
+  \item In many developing countries, patriarchal norms remain strong.
+  \item Inequality in access to divorce persists and women’s labor‑force participation remains low.
+  \item Psychic costs of male unemployment and of women’s employment may be high.
+  \item Exposure‑reduction stories are less credible here given the opposing effects on female unemployment.
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{Descriptive Evidence}
-\begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{../TA9/inputs/fig1.png}
-\end{figure}
+% ---------------------------------------------------------------
+\begin{frame}{Implications for Bargaining Models}
 \begin{itemize}
-\item No countries with extremely abundant natural resources in 1970 grew rapidly for the next 20 years
+  \item Despite not being causal evidence, the paper documents these conditional correlations clearly.
+  \item Standard bargaining models emphasize that the intra‑household balance of power is highly sensitive to outside options.
+  \item But these models have different implications where outside options cannot be exercised easily because of legal or social constraints (explicit or implicit).
+  \item Unfortunately, in many developing countries, women may lack the financial means or social support to end the partnership.
+  \item IPV is recurrent—some women do not leave even after being subjected to violence the first time.
+  \item Context matters for policy; effects need not be unambiguous.
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{Descriptive Evidence - Persistence}
-\begin{figure}
-\centering
-\includegraphics[width=0.55\textwidth]{../TA9/inputs/fig2.png}
-\end{figure}
+
+
+\section{Gender Violence, Enforcement, and Human Capital: Evidence from Women’s Justice Centers in Peru}
+
+% ---------------------------------------------------------------
+\begin{frame}{What Else Might Affect IPV in Developing Countries?}
 \begin{itemize}
-\item Conspicuously high growth and low natural resources are China, Korea
-\pause \item Conspicuously high resources and low growth are Gabon, Venezuela and Zambia. 
-\pause \item Not very strong negative relationship...
-\pause \item But clearly no positive relationship
+  \item The justice system in many developing countries is weak.
+  \item Women cannot rely on it to protect them from IPV:
+  \begin{itemize}
+    \item Very high rates of under‑reporting of gender‑based violence
+    \item Low rates of arrests for crimes against women
+  \end{itemize}
+  \item Lack of trust in formal institutions hinders reporting and enforcement.
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
+%---------------------------------------------------------------
+\begin{frame}{Today's Paper}
+\small
+\textbf{Sviatschi \& Trako (2024).} \emph{Gender violence, enforcement, and human capital: Evidence from women’s justice centers in Peru}. \textit{Journal of Development Economics}, 168, 103262.\\[0.6em]
+\textbf{Question 1:} Does improving law‑enforcement responses to gender‑based violence increase reporting and deter future violence? \\[0.6em]
+\textbf{Question 2:} Are there intergenerational effects of improving women’s access to justice on their children’s human capital?
+\end{frame}
+%---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{Possible Mechanisms I}
-
+% ---------------------------------------------------------------
+\begin{frame}{Context and Setting}
 \begin{itemize}
-\item Long run trend of world prices for commodities
-\begin{itemize}
-    \pause \item Could be downward
-    \pause \item But could also be upward 
-    \pause \item No convincing empirical evidence
-\end{itemize}
-\item Volatility in commodity prices 
-\begin{itemize}
-    \pause \item Commodity prices are highly volatile
-    \pause \item Cyclical shifts of factors of production - transaction costs 
-    \pause \item Low short-run elasticities - large price responses to small shocks
-\end{itemize}
+  \item Peru: IPV is particularly acute—among the highest rates in Latin America and the Caribbean.
+  \item 1994 Inter‑American Convention on the Prevention, Punishment, and Eradication of Violence against Women.
+  \item Peru altered the jurisdiction of its police and justice system to encompass domestic and sexual violence complaints and resolution.
+  \item In 1999, this led to the creation of Women’s Justice Centers (WJCs).
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{Possible Mechanisms II}
+% ---------------------------------------------------------------
+\begin{frame}{Women’s Justice Centers (WJCs)}
 \begin{itemize}
-\item Permanent crowding out of manufacturing 
-\begin{itemize}
-    \pause \item How does it happen?
-    \pause \item Positive wealth shocks $\rightarrow$ excess demand for non-traded goods $\rightarrow$ prices $\uparrow$ $\rightarrow$ manufacturing profits $\downarrow$ $\rightarrow$ manufacturing $\downarrow$ growth $\downarrow$
-    \pause \item Diversification is desirable - in particular, industrial policy 
-\end{itemize}
+  \item Free‑of‑charge specialized public centers.
+  \item Objectives: strengthen the justice system’s capacity to detect and assist victims of gender‑based violence.
+  \item Assistance through access to legal, social, and psychological resources.
+  \item Reduces the time and hassle cost of filing complaints.
+  \item Personnel are trained to handle GBV cases and to reduce potential mistreatment of victims.
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{Crowding out of manufacturing?}
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{../TA9/inputs/fig3.png}
-\end{figure}
+% ---------------------------------------------------------------
+\begin{frame}{Steps at a WJC}
 \begin{itemize}
-\item Resource abundance tended to render the export sectors uncompetitive
-\item So never successfully pursued export-led growth
+  \item An admissions officer identifies the reason for the visit and creates an administrative record.
+  \item Trained psychologists interview the victim to assess psychological state and provide emotional support; referrals to specialized health centers when necessary.
+  \item The legal team offers assistance, participates in the investigation, and supports prosecution.
+  \item Social workers provide counseling and help design a safety plan for victims.
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{Possible Mechanisms III}
+% ---------------------------------------------------------------
+\begin{frame}{Growth of WJCs in Peru}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{inputs/fig10.png}
+    \end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+% ---------------------------------------------------------------
+\begin{frame}{Concentration of WJCs in Peru}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{inputs/fig11.png}
+    \end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Data}
 \begin{itemize}
-\item Autocractic or oligarchic governance
-\begin{itemize}
-    \pause \item Elicits a political contest for resource rents
-    \pause \item Extractive industries emerged 
-    \pause \item Which commodities? Oil, minerals, cocoa, coffee, plantation crops
-\end{itemize}
-\item Anarchic institutions
-\begin{itemize}
-    \pause \item Unenforeceable property rights - tragedy of the commons
-    \pause \item Unsustainably rapid depletion of resources - solution to privatise?
-    \pause \item Civil war - factions fight for control of resources (Angola, Sudan) 
-\end{itemize}
-\pause \item Cyclical expansion of the non-traded sector via the Dutch Disease
-\begin{itemize}
-    \pause \item Currency appreciates $\rightarrow$ govt. spending $\uparrow$ $\rightarrow$ non-traded sector prices $\uparrow$ $\rightarrow$ shift of labour and land from traded to non-traded sector
-    \pause \item Economy more vulnerable to resource-related shocks
-\end{itemize}
+  \item DHS surveys (as in Bhalotra et al.\ 2021).
+  \item School‑level datasets: enrollment by grade and gender; test scores.
+  \item Directory of WJCs: location and opening dates.
+  \item Hospital data from the Peruvian Ministry of Health—deaths from aggression and female hospitalizations.
+  \item Construct distance to the nearest WJC for each DHS cluster; define exposure within 1 km.
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-\section*{Practice Final}
+% ---------------------------------------------------------------
+\begin{frame}{Identification Challenge}
+\begin{itemize}
+  \item Key challenge: non‑random placement of WJCs.
+  \begin{itemize}
+    \item \textbf{Approach 1:} Descriptive evidence that placement was driven by population density rather than preexisting violence.
+    \item \textbf{Approach 2:} Use data to test for endogeneity directly.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
 
+% ---------------------------------------------------------------
+\begin{frame}{District Size Appears to Drive Placement}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{inputs/fig12.png}
+    \end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Empirical Strategy}
+\begin{itemize}
+  \item Difference‑in‑Differences.
+  \item Exploit variation from differential timing in the opening of WJCs and spatial variation in exposure to a WJC.
+  \item Individual‑level regression:
+\begin{equation}
+Y_{i d t} \;=\; \alpha \;+\; \beta\,\text{WJC}_{i d t} \;+\; \mathbf{X}_{i d t}^{\top}\delta \;+\; \gamma_{d} \;+\; \lambda_{p t} \;+\; \varepsilon_{i d t}
+\end{equation}
+\item Key identifying assumption: in the absence of WJCs, treated and control households within the same province would have followed similar trends.
+\item District‑level regression:
+\begin{equation}
+  Y_{d t} \;=\; \alpha \;+\; \beta\,\text{WJC}_{d t} \;+\; \mathbf{X}_{d t}^{\top}\delta \;+\; \gamma_{d} \;+\; \lambda_{p t} \;+\; \varepsilon_{d t}
+\end{equation}
+  \item FE logic: unobserved time‑varying shocks within a province are uncorrelated with the within‑province rollout of WJCs after conditioning on fixed effects and controls.
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{WJCs Reduce Self‑Reported IPV}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.85\linewidth]{inputs/fig13.png}
+    \end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+% ---------------------------------------------------------------
+\begin{frame}{WJCs Reduce Deaths and Hospitalizations from Violence}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.95\linewidth]{inputs/fig14.png}
+    \end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{WJCs Increase School Attendance}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.85\linewidth]{inputs/fig15.png}
+    \end{figure}
+  2 p.p.\ increase in attendance for children exposed to WJCs.
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Potential Mechanisms}
+\begin{itemize}
+  \item Exposure to household violence: split by whether the grandmother was exposed to violence—it matters.
+  \item Intra‑household bargaining: suggestive evidence that women near WJCs are more likely to make joint decisions.
+  \item Incapacitation: compare households where the father is present vs.\ absent; no meaningful differences.
+  \item Perceptions of safety in the area: no reduction in other crimes.
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Persistent Positive Effects on Prosecutions}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{inputs/fig16.png}
+    \end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Discussion}
+\begin{itemize}
+  \item The opening of a WJC has positive effects on women’s and children’s outcomes.
+  \item Effects are concentrated in very local areas (within 1 km).
+  \item WJCs are becoming popular around the world.
+  \item They encourage reporting and increase the probability of prosecution.
+  \item Policy lesson: law and enforcement matter.
+  \item Consider the \emph{spillover} effects on children when evaluating policies.
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
 
 \end{document}

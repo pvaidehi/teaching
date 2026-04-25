@@ -31,7 +31,7 @@
 \linespread{1.2}
 
 % IDENTIFYING INFORMATION
-\title[class]{ECON 326: Economics of Developing Countries \\ TA Session 9}
+\title[class]{ECON 326: Economics of Developing Countries \\ TA Session 7}
 \author[vaidehi's class ]{Vaidehi Parameswaran (Northwestern Econ)}
 \date{\monthname[\the\month] \the\year}
 
@@ -64,281 +64,216 @@
 \begin{frame}{Today's Agenda}
 
 \begin{itemize}
-\item \href{https://www.lse.ac.uk/economics/Assets/Documents/personal-pages/robin-burgess/the-brazilian-amazons-double-reversal-of-fortune-manuscript.pdf}{\textcolor{blue}{Burgess et al. (2019)}}
-\item The Curse of Natural Resources
-\item Practice final
+\item \href{https://onlinelibrary-wiley-com.turing.library.northwestern.edu/doi/epdf/10.3982/ECTA18916}{\textcolor{blue}{Beaman, Karlan, Thuysbaert \& Udry (2023)}}
+\item \href{https://www.nber.org/system/files/working_papers/w16018/w16018.pdf}{\textcolor{blue}{Feigenberg, Field, \& Pande (2013)}}
 \end{itemize}
 \end{frame}
 %---------------------------------------------------------------------
 
-
-\section*{\href{https://www.lse.ac.uk/economics/Assets/Documents/personal-pages/robin-burgess/the-brazilian-amazons-double-reversal-of-fortune-manuscript.pdf}{\textcolor{blue}{Burgess et al. (2019)}} \\[5mm] 
-\textnormal{\small{The Brazilian Amazon’s Double Reversal of Fortune}}}
+\section*{\href{https://onlinelibrary-wiley-com.turing.library.northwestern.edu/doi/epdf/10.3982/ECTA18916}{\textcolor{blue}{Beaman, Karlan, Thuysbaert \& Udry (2023)}} \\[5mm] 
+\textnormal{\small{Selection Into Credit Markets: Evidence from agriculture in  Mali}}}
 
 %---------------------------------------------------------------------
-\begin{frame}{Motivation}
+\begin{frame}{Overview}
+
 \begin{itemize}
-\item Environmental damage entails an externality - a market failure 
-\item Requires government involvement to regulate or tax activity to correct this externality
-\item State capacity to effectively regulate is weak in many developing countries
-\item Political economy can be important 
+\item Returns to investment in productive activities may be heterogenous
+\item Financial markets ought to help capital flow to the highest return activities. 
+\item But do they?
+\item Market failures in financial and credit markets could impede efficient allocation of capital
+\item This paper examines the extent to which a lending program for smallholder farmers in Mali successfully identifies and allocates credit to the farmers with higher returns to investment
 \end{itemize}
 \end{frame}
 %---------------------------------------------------------------------
 
 %---------------------------------------------------------------------
-\begin{frame}{This Paper}
+\begin{frame}{RCT Design I}
 \begin{itemize}
-\item Explore how national policies can exert regulatory control over conservation 
-\item Exploit what happens at international borders 
-\item One of the most important global ecosystems: the Amazon rainforest
-\begin{itemize}
-    \item The rate of deforestation will affect global warming
-    \item The Amazon is a global public good
+    \item Two-stage RCT 
+    \item Stage 1: A microcredit organisation offered group-liability loans to all women in 88 randomly selected villages in Mali 
+    \item Stage 2: After decisions to take up the loan were made, a random subset of households that did not borrow in loan villages and in non-loan villages were immediately given a cash grant
+    \item Key idea: identify whether those who chose not to borrow have lower average returns to a grant
 \end{itemize}
-\end{itemize}
+\end{frame}
+%---------------------------------------------------------------------
+
+%---------------------------------------------------------------------
+\begin{frame}{RCT Design II}
+    \begin{figure}
+            \centering
+            \includegraphics[width=0.6\textwidth]{inputs/fig3.png}
+    \end{figure}
 \end{frame}
 %---------------------------------------------------------------------
 
 %---------------------------------------------------------------------
 \begin{frame}{Strategy}
 \begin{itemize}
-\item Satellite data on deforestation - even acriss borers, from 2000 - 2018 
-\begin{itemize}
-\item High resolution - can zoom in for precise effects 
-\end{itemize}
-\item In 2006, Brazil introduced deforestation policies
-\item Spatial RDD design - popular startegy using borders for policy effects
+    \item We want to estimate $\beta_1$ and $\beta_2$ in
+    \begin{equation*}
+        Y_i = \alpha_i + \beta_1 grant_i + \beta_2 grant_i\times loan_{v(i)}+ \gamma_1 loan_{v(i)} + \epsilon_i
+    \end{equation*}
+    \item $Y_i$ - outcome of interest (profits)
+    \item $grant_i = 1$ if household $i$ receives the cash grant
+    \item $loan_{v(i)} = 1$ if household $i$ is in a village $v(i)$ that gets loans (but if so, this means $i$ got shut out of the credit market)
+    \item $\beta_1$ is the effect of the cash grant in non-loan villages
+    \item $\beta_2$ is the additional effect of the cash grant on households from loan villages denied loans (for them, the total effect of cash grants is $\beta_1+\beta_2$)
 \end{itemize}
 \end{frame}
 %---------------------------------------------------------------------
 
+
+
 %---------------------------------------------------------------------
-\begin{frame}{Satellite Data}
+\begin{frame}{Results I}
+\begin{itemize}
+    \item Within randomly selected loan villages, the ``best'' farmers seem to be the ones who get the loans
+    \item They have more assets and make more profits 
+\end{itemize}
 \begin{figure}
-\centering
-\includegraphics[width=0.4\textwidth]{inputs/fig2.2.png}
+    \centering
+    \includegraphics[width=0.6\textwidth]{inputs/fig4.png}
 \end{figure}
 \end{frame}
 %---------------------------------------------------------------------
 
 %---------------------------------------------------------------------
-\begin{frame}{Fact 1}
+\begin{frame}{Results II}
+\begin{itemize}
+    \item \textbf{Main result:} Cash grant is less effective in loan villages
+    \item In both loan and no-loan villages, grant recipients increase consumption
+    \item But effects on recipients' economic performance, as measured by their farms' profits, are only observed in no-loan villages
+    \item Suggests that those not selected into credit have lower profitability: receiving money does not raise their profits too much
+\end{itemize}
 \begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{inputs/fig2.1.png}
-\end{figure}
-\begin{itemize}
-\item Until 2005, deforestation level and rate significantly higher on the Brazilian side 
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Fact 1}
-\begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{inputs/fig2.3.png}
-\end{figure}
-\begin{itemize}
-\item Deforestation is visually apparent: forest cover drops sharply exactly at the national border.
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-
-%---------------------------------------------------------------------
-\begin{frame}{Fact 2}
-\begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{inputs/fig_2006.png}
-\end{figure}
-\begin{itemize}
-\item Discontinuity in deforestation rates disappears in 2006 - the first reversal 
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{What happened in 2006?}
-\begin{itemize}
-\item In 2003, in the Lula government, Marina Silva appointed as Minister of Environment
-\item She was from the Amazon, and had a strong environmentalist stance
-\item Law that allowed sateelite-based deforestation detection system (DETER) to become a key tool
-\item Sent in federal police and troops to arrest illegal loggers and confiscate their machinery
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Fact 3}
-\begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{inputs/fig_post.png}
-\end{figure}
-\begin{itemize}
-\item Positive effects relatively short-lived 
-\item Deforetstaion resumes growing in 2014 - the second reversal
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{What changed?}
-\begin{itemize}
-\item New government - gave amnesty to those engaged in illegal deforestation before 2008
-\item 2014 was a politically turbulent year
-\item Next president introduced laws that made it incentive-compatible for public land grabs
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{The Double Reversal}
-\begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{inputs/reversal.png}
+    \centering
+    \includegraphics[width=0.4\textwidth]{inputs/fig4.png}
 \end{figure}
 \end{frame}
 %---------------------------------------------------------------------
 
 %---------------------------------------------------------------------
-\begin{frame}{Fact 4}
+\begin{frame}{Results III}
+\begin{itemize}
+    \item Column 10 presents the key result: $\beta_1+\beta_2 = 0$  for profits
+    \item So is it okay that these households are excluded from the credit market? 
+\end{itemize}
 \begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{inputs/fig_land_use.png}
+        \centering
+        \includegraphics[width=\textwidth]{inputs/fig6.png}
+\end{figure}
+\end{frame}
+%---------------------------------------------------------------------
+
+\section*{\href{https://www.nber.org/system/files/working_papers/w16018/w16018.pdf}{\textcolor{blue}{Feigenberg, Field, \& Pande (2013)}} \\[5mm] 
+\textnormal{\small{Building Social Capital Through Microfinance}}}
+
+
+%---------------------------------------------------------------------
+\begin{frame}{This paper}
+
+\begin{itemize}
+\item In developing countries, often there is a lack of formal insurance and contract enforcement mechanisms
+\item Thus social capital can be particularly valuable 
+\item This paper examines the role of repeated social interactions in building social capital
+\end{itemize}
+\end{frame}
+%---------------------------------------------------------------------
+
+%---------------------------------------------------------------------
+\begin{frame}{Setting}
+
+\begin{itemize}
+\item Collaborated with a MFI in West Bengal, India 
+\item A loan officer conducted a meeting to inform female residents about the loan product that was available
+\item Interested women were invited to a five-day training program, after which they were assigned into groups of 10 with a team leader
+\item Clients in a single group lived in close proximity to each other
+\end{itemize}
+\end{frame}
+%---------------------------------------------------------------------
+
+%---------------------------------------------------------------------
+\begin{frame}{Experimental Design}
+
+\begin{itemize}
+\item Each group was offered an individual-liability loan of \$100 with a repayment schedule that would be assigned later 
+\item Groups were randomised into weekly or monthly schedules:
+\begin{itemize}
+    \item Control: 38 groups who met on a monthly basis, repaid in 11 monthly installments
+    \item Treatment 1: 30 groups who met on a weekly basis, repaid in 44 weekly installments
+    \item Treatment 2: 32 groups who met on a weekly basis but repaid monthly 
+\end{itemize}
+\item Meetings:
+\begin{itemize}
+    \item Meetings were held in the team leader's house in the presence of as assigned loan officer
+    \item Clients took an oath to repay the loan regularly and deposited payment with the loan officer 
+    \item Client behaviour was observable to other team members 
+    \item Compliance with meeting protocol was high in Control and Treatment 1 groups, Treatment 2 had poor compliance rates 
+\end{itemize}
+\end{itemize}
+\end{frame}
+%---------------------------------------------------------------------
+
+%---------------------------------------------------------------------
+\begin{frame}{Randomisation Check}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{inputs/Fig1.png}
+\end{figure}
+\end{frame}
+%---------------------------------------------------------------------
+
+%---------------------------------------------------------------------
+\begin{frame}{Meeting Frequency and Social Interactions}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{inputs/Fig2.png}
 \end{figure}
 \begin{itemize}
-\item Land use restrictions matter 
-\item Protected areas have always been less deforested
+    \item Use survey to ask clients about how frequently they interact with group members at the end of meetings 
+    \item Switching a client from monthly to weekly meetings increases social contact with the group by over 3 sd. 
+    \item These differences are persistent 
 \end{itemize}
 \end{frame}
 %---------------------------------------------------------------------
 
 %---------------------------------------------------------------------
-\begin{frame}{Conclusion}
+\begin{frame}{Risk-sharing}
 \begin{itemize}
-\item Combined, these results demonstrate the reach of the Brazilian state to exploit or conserve its natural resources
-\item Suggest that rapid deforestation in early 2000s was a consequence of a pro-exploitation policy enviroment 
-\item Policy stance rapidly reversed in 2006-2013 with laws introduced 
-\item But the position stalles and reversed in the post-2013 period with economic and political crisis collided with weakened forest conservation laws 
-\item So state capacity does matter!
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-\section*{The Curse of Natural Resources}
-
-%---------------------------------------------------------------------
-\begin{frame}{What is it?}
-
-\begin{itemize}
-\item The observation that countries rich in natural resources tend to perform badly
-\item Also called the paradox of plenty or the resource curse
-\item Sachs and Warner maybe the first to document this using econometrics in a paper in 1995
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Descriptive Evidence}
+    \item The authors examine whether increased social interaction facilitated risk-sharing arrangements 
+    \item Play field-based lottery games to elicit willingness to form risk-sharing arrangements
+    \item A client was chosen for the lottery and could choose to give tickets to other group members
 \begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{inputs/fig1.png}
+    \centering
+    \includegraphics[width=0.6\textwidth]{inputs/table3.png}
+\end{figure}
+    \item Column 1: Treatment 1 clients gave 23.8\% more tickets than the Control group 
+\end{itemize}
+\end{frame}
+%---------------------------------------------------------------------
+%---------------------------------------------------------------------
+\begin{frame}{Loan Default}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{inputs/table4.png}
 \end{figure}
 \begin{itemize}
-\item No countries with extremely abundant natural resources in 1970 grew rapidly for the next 20 years
+    \item Second loan offered with same terms for both Control and Treatment 1 clients
+    \item Columns (1) and (2): Treatment 1 clients nearly 3 times (5.2\%) less likely to default on second loan relative to Control 
 \end{itemize}
 \end{frame}
 %---------------------------------------------------------------------
 
 %---------------------------------------------------------------------
-\begin{frame}{Descriptive Evidence - Persistence}
-\begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{inputs/fig2.png}
-\end{figure}
+\begin{frame}{Discussion}
 \begin{itemize}
-\item Conspicuously high in growth and low in natural resources are China, Korea, and some other Asian countries
-\pause \item Conspicuously high in natural resources and low in growth are Gabon, Venezuela and Zambia. 
-\pause \item Not very strong negative relationship...
-\pause \item But clearly no positive relationship
+    \item A program that encourages repeat interactions increases long-run social ties 
+    \item Enhances social capital
+    \item Improved risk-sharing in a setting where contract enforcement is weak $\rightarrow$ welfare-improving 
 \end{itemize}
 \end{frame}
 %---------------------------------------------------------------------
 
-
-%---------------------------------------------------------------------
-\begin{frame}{Possible Mechanisms I}
-
-\begin{itemize}
-\item Long run trend of world prices for commodities
-\begin{itemize}
-    \pause \item Could be downward
-    \pause \item But could also be upward 
-    \pause \item No convincing empirical evidence
-\end{itemize}
-\item Volatility in commodty prices 
-\begin{itemize}
-    \pause \item Commodity prices are highly volatile
-    \pause \item Cyclical shifts of factors of production - transaction costs 
-    \pause \item Low short-run elasticities - large price responses to small shocks
-\end{itemize}
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Possible Mechanisms II}
-\begin{itemize}
-\item Permanent crowding out of manufacturing 
-\begin{itemize}
-    \pause \item How does it happen?
-    \pause \item Positive wealth shocks $\rightarrow$ excess demand for non-traded goods $\rightarrow$ prices $\uparrow$ $\rightarrow$ manufacturing profits $\downarrow$ $\rightarrow$ manufacturing $\downarrow$ growth $\downarrow$
-    \pause \item Diversification is desirable - in particular, industrial policy 
-\end{itemize}
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Crowding out of manufacturing?}
-\begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{inputs/fig3.png}
-\end{figure}
-\begin{itemize}
-\item Resource abundance tended to render the export sectors uncompetitive
-\item So never successfully pursued export-led growth
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Possible Mechanisms III}
-\begin{itemize}
-\item Autocractic or oligrahic governance
-\begin{itemize}
-    \pause \item Elicits a political contest for resource rents
-    \pause \item Extractive industries emerged 
-    \pause \item Which commodities? Oil, minerals, cocoa, coffee, plantation crops
-\end{itemize}
-\item Anarchic institutions
-\begin{itemize}
-    \pause \item Unenforeceable property rights - tragedy of the commons
-    \pause \item Unsustainably rapid depletion of resources - solution to privatise?
-    \pause \item Civil war - factions fight for control of resources (Angola, Sudan) 
-\end{itemize}
-\item Cyclical expansion of the non-traded sector via the Dutch Disease
-\begin{itemize}
-    \pause \item Currency appreciates $\rightarrow$ govt. spending $\uparrow$ $\rightarrow$ non-traded sector prices $\uparrow$ $\rightarrow$ shift of labour and land from traded to non-traded sector
-    \pause \item Economy more vulnerable to resource-related shocks
-\end{itemize}
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-\section*{Practice Final}
 
 
 \end{document}

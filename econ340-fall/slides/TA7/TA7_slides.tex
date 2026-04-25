@@ -1,379 +1,614 @@
 \documentclass[11pt,notes=hide,aspectratio=169,mathserif]{beamer}
 
-% PACKAGES
-\usepackage{graphics}  % Support for images/figures
-\usepackage{graphicx}  % Includes the \resizebox command
-\usepackage{tikz}      % For flowcharts
-\usetikzlibrary{arrows.meta, positioning} % Libraries for TikZ
-
-
-\usepackage{url}	   % Includes \urldef and \url commands
-\usepackage{natbib}
-\usepackage{bibentry}  % Includes the \nobibliography command
-\usepackage{verbatim}  %Supports comments
-\usepackage{booktabs} %Supports \toprule, \bottomrule, etc in tables
-\usepackage{etoolbox}  %Supports toggle commands
+% ================= PREAMBLE (matches your style) =================
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{url}
+%\usepackage{natbib}
+\usepackage{bibentry}
+\usepackage{verbatim}
+\usepackage{booktabs}
+\usepackage{etoolbox}
 \usepackage{datetime}
-\usepackage{bm}	%Supports bold math \bm
-%the LaTeX standard:
-\usepackage{cmbright}
-\setbeamerfont{frametitle}{family=\fontfamily{cmbr}\selectfont,size=\Large}
-\fontencoding{OT1}\fontfamily{cmbr}\selectfont
-
-% PACKAGES (that should already be included by your LyX document settings)
-\usepackage{amsfonts}  % Lots of stuff, including \mathbb 
-\usepackage{amsmath}   % Standard math package
-\usepackage{amsthm}    % Includes the comment functions
+\usepackage{bm}
 \usepackage{subcaption}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
 
-% CUSTOM DEFINITIONS
-\def\newblock{} %Get beamer to cooperate with BibTeX
+\def\newblock{}
 \linespread{1.2}
 
-% IDENTIFYING INFORMATION
-\title[class]{ECON 326: Economics of Developing Countries \\ TA Session 7}
-\author[vaidehi's class ]{Vaidehi Parameswaran (Northwestern Econ)}
+\title[class]{ECON 340: Economics of the Family \\ TA Session 7}
+\author[Vaidehi's class]{Vaidehi Parameswaran (Northwestern Economics)}
 \date{\monthname[\the\month] \the\year}
 
-% THEMATIC OPTIONS
-%\setbeamercovered{transparent}
 \usetheme{metropolis}
-\definecolor{mycolor}{RGB}{48,7,144} 
-\setbeamercolor{frametitle}{bg=mycolor, fg=white} % Frame title color
-\setbeamercolor{title separator}{fg=mycolor} 
-\setbeamercolor{progress bar}{fg=mycolor} 
+\definecolor{mycolor}{RGB}{48,7,144}
+\setbeamercolor{frametitle}{bg=mycolor, fg=white}
+\setbeamercolor{title separator}{fg=mycolor}
+\setbeamercolor{progress bar}{fg=mycolor}
 \beamertemplatenavigationsymbolsempty
 \setbeamertemplate{footline}[frame number]{}
 \setbeamertemplate{itemize item}{\small\raisebox{1pt}{\textcolor{mycolor}{$\blacktriangleright$}}}
 \setbeamertemplate{itemize subitem}{\footnotesize\raisebox{1pt}{\textcolor{mycolor}{$\triangleright$}}}
 \setbeamertemplate{itemize subsubitem}{\tiny\raisebox{1pt}{\textcolor{mycolor}{$\triangleright$}}}
 
-% BACKUP SLIDE NUMBERING
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=mycolor,
+  urlcolor=mycolor,
+  citecolor=mycolor
+}
+
 \usepackage{appendixnumberbeamer}
+\setbeamertemplate{section in toc}{%
+  \leavevmode\llap{\textcolor{mycolor}{$\blacktriangleright$}\hspace{0.6ex}}%
+  \inserttocsection\par}
+\setbeamertemplate{subsection in toc}{%
+  \leavevmode\llap{\textcolor{mycolor}{$\triangleright$}\hspace{1.1ex}}%
+  \inserttocsubsection\par}
+
+\AtBeginSection[]{
+  \begin{frame}{Today}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
 
 \begin{document}
 
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 \begin{frame}[plain]
 \titlepage
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
 
-%---------------------------------------------------------------------
-\begin{frame}{Today's Agenda}
+\section{Parental Leave Benefits, Household Labor Supply, and Children’s Long-run Outcomes}
 
+% ---------------------------------------------------------------
+\begin{frame}{Today's Paper}
+\small
+\textbf{Ginja, Jans \& Karimi (2018).} \emph{Parental Leave Benefits, Household Labor Supply, and Children’s Long-run Outcomes} (Sweden).\\[0.6em]
+\textbf{Question:} How do \emph{benefit levels} in parental leave (holding duration \& job protection fixed) affect\\
+\hspace{1.2em}(i) mothers’ and partners’ labor supply and household income, and\\
+\hspace{1.2em}(ii) older vs.\ younger siblings’ health \& education?\\[0.4em]
+\textbf{Design:} RD at Swedish \textbf{Speed Premium (SP)} spacing cutoffs (24 and 30 months) for consecutive births.
+\end{frame}
+% ---------------------------------------------------------------
+
+
+% ---------------------------------------------------------------
+\begin{frame}{Swedish Parental Leave \& the Speed Premium}
+\small
 \begin{itemize}
-\item \href{https://onlinelibrary-wiley-com.turing.library.northwestern.edu/doi/epdf/10.3982/ECTA18916}{\textcolor{blue}{Beaman, Karlan, Thuysbaert \& Udry (2023)}}
-\item \href{https://www.nber.org/system/files/working_papers/w16018/w16018.pdf}{\textcolor{blue}{Feigenberg, Field, \& Pande (2013)}}
-\item \href{https://onlinelibrary.wiley.com/doi/abs/10.3982/ECTA5781}{\textcolor{blue}{Karlan and Zinman, (2009)}}
+  \item 1970s–80s Sweden: paid, job-protected parental leave (PL); wage-replaced benefits (about 90\% of prior salary, capped).
+  \item \textbf{Work requirement} (qualifying earnings) usually needed to set the benefit level for the next child.
+  \item \textbf{Speed Premium (SP):} if births are spaced within a threshold, the mother keeps the \emph{previous} wage-based benefit \emph{without re-qualifying}.
+  \begin{itemize}
+    \item Threshold set to \textbf{24 months} (1980–85), then \textbf{30 months} (1986–).
+    \item Eligibility determined using \emph{expected due date}; revealed during pregnancy.
+  \end{itemize}
+  \item Thus implied that mothers did not have to return to work between births and re-qualify for (higher) PL benefits,
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-\section*{\href{https://onlinelibrary-wiley-com.turing.library.northwestern.edu/doi/epdf/10.3982/ECTA18916}{\textcolor{blue}{Beaman, Karlan, Thuysbaert \& Udry (2023)}} \\[5mm] 
-\textnormal{\small{Selection Into Credit Markets: Evidence from agriculture in  Mali}}}
 
-%---------------------------------------------------------------------
-\begin{frame}{Overview}
-
+% ---------------------------------------------------------------
+\begin{frame}{So what does the SP do?}
+\small
+\pause 
 \begin{itemize}
-\item Returns to investment in productive activities may be heterogenous
-\pause \item Financial markets ought to help capital flow to the highest return activities
-\pause \item But do they?
-\pause \item Market failures in financial and credit markets could impede efficient allocation of capital
-\pause \item This paper examines the extent to which a lending program for smallholder farmers in Mali successfully identifies and allocates credit to the farmers with higher returns to investment
+  \item Intuition: SP lowers the opportunity cost of home time \emph{before and after} the subsequent birth.
+  \item Incentives for mothers to space births in short intervals
+  \item So mong mothers with at
+  least one child, giving birth to a subsequent child outside of the eligibility spacing interval implies a lower benefit level for leave taken with the new child
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{RCT Design I}
+% ---------------------------------------------------------------
+\begin{frame}{Data \& Outcomes}
+\small
 \begin{itemize}
-    \item Two-stage RCT 
-    \pause \item Stage 1: A microcredit organisation offered group-liability loans to all women in 88 randomly selected villages in Mali 
-    \pause \item Stage 2: After decisions to take up the loan were made, a random subset of households that did not borrow in loan villages and in non-loan villages were immediately given a cash grant
-    \pause \item Key idea: identify whether those who chose not to borrow have lower average returns to a grant
+  \item Linked Swedish registers (parents \& children): labor earnings, disposable income, births, health (inpatient), grade 9 GPA, high school eligibility, college by age 24.
+  \item \textbf{Sample:} families with \(\ge\)2 children; main window \(\pm24\) weeks around the cutoff; second births 1980–89.
+  \item \textbf{Parent outcomes:} mothers’/fathers’ labor earnings (pre- and post-birth windows), maternal participation, household disposable income.
+  \item \textbf{Child outcomes:} birth outcomes (younger child), hospitalizations at ages 10/14, education (GPA, high school eligibility, college by 24) for older \& younger siblings.
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{RCT Design II}
+
+
+% ---------------------------------------------------------------
+\begin{frame}{Strategy - Fuzzy RDD}
+\small
+\begin{itemize}
+  \item \textbf{Running variable:} weeks between births 1 and 2 (or 2 and 3 in a higher-parity sample).
+  \item \textbf{Cutoffs:} \(c=104\) weeks (24 months) or \(c=130\) weeks (30 months).
+  \item \textbf{RD (fuzzy ITT):}
+  \[
+  y_{i,\tau}=\alpha + \mathbf{1}\{t\le c\}\beta + \mathbf{1}\{t>c\}f_r(t-c)+\mathbf{1}\{t\le c\}f_l(c-t)+\varepsilon_i,
+  \]
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Identification Assumptions}
+What are the key assumptions for identification here?
+\begin{itemize}
+    \pause \item \textbf{Continuity of potential outcomes at the cutoff:} in the absence of treatment, outcomes would evolve smoothly as a function of birth spacing.
+    \pause \item \textbf{Local random assignment:} families just below vs.\ just above the cutoff are comparable in observed and unobserved characteristics.
+    \pause \item No manipulation of birth timing around the cutoffs.
+    \pause \item No other policies or events change discontinuously at the cutoffs.
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+
+% % ---------------------------------------------------------------
+% \begin{frame}{Labor Supply: Levels \& Timing}
+% \small
+% \textbf{Pooling around 2nd birth (year \(\kappa-1\) to \(\kappa+1\)):}
+% \begin{itemize}
+%   \item Mothers’ labor earnings drop by roughly \( \sim 12{,}000 \) SEK in the \(\pm1\)y window (ITT). 
+%   \item Household disposable income is essentially unchanged overall.
+% \end{itemize}
+% \medskip
+% \textbf{By year (Table estimates):}
+% \begin{itemize}
+%   \item \textbf{Pre-birth (\(\kappa-1\)):} Mothers’ earnings \( -3.84 \)k SEK (\(\approx-3.9\%\)); fathers \(\approx 0\); household disposable \(\approx 0\).
+%   \item \textbf{Post-birth (\(\kappa,\kappa+1\)):} Mothers \( -6.76 \)k SEK (\(\approx-5.2\%\)); fathers \(\approx 0\); \textbf{household disposable} \( +6.82 \)k SEK (\(\approx+1.3\%\)).
+% \end{itemize}
+% \end{frame}
+% % ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Effect of SP on Earnings and Income}
+\small
+\begin{figure}
+\centering
+\includegraphics[width=0.85\linewidth]{inputs/fig9.png}
+\end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Timing of Labor Supply Response}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth]{inputs/fig10.png}
+\end{figure}
+LS declines pre-birth
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Timing of Labor Supply Response}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth]{inputs/fig10-1.png}
+\end{figure}
+LS declines immediately after- post-birth too - take up of PL 
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Timing of Labor Supply Response}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth]{inputs/fig10-2.png}
+\end{figure}
+No effect on fathers' LS 
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Timing of Labor Supply Response}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth]{inputs/fig10-3.png}
+\end{figure}
+HH disposable income does not decrease pre-birth - paid maternity leave or government transfers
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Timing of Labor Supply Response}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth]{inputs/fig10-4.png}
+\end{figure}
+Positive effect of SP HH's post-birth disposable income - mothers on PL
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Timing of Labor Supply Response}
+\begin{figure}
+\centering
+\includegraphics[width=0.6\linewidth]{inputs/fig10-1.png}
+\end{figure}
+Mothers reduce LS in the year before second birth by nearly 4\% relative to baseline earnings
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Temporal Effect of SP on Maternal Labor Supply}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\linewidth]{inputs/fig11.png}
+\end{figure}
+Pre-treatement placebo 
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Temporal Effect of SP on Spousal Labor Supply}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\linewidth]{inputs/fig12.png}
+\end{figure}
+No effect on fathers' LS - no evidence of substitution
+\end{frame}
+% ---------------------------------------------------------------
+
+
+% ---------------------------------------------------------------
+\begin{frame}{Heterogeneity by Mother's Earnings}
+\begin{figure}
+\centering
+\includegraphics[width=0.6\linewidth]{inputs/fig13.png}
+\end{figure}
+For high-earning couples, SP increases \emph{specialization}: more maternal home time, more paternal market work in the short run.
+\end{frame}
+% ---------------------------------------------------------------
+
+
+% ---------------------------------------------------------------
+\begin{frame}{Birth \& Health Outcomes}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth]{inputs/fig14.png}
+\end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Education Outcomes}
+\begin{figure}
+\centering
+\includegraphics[width=0.95\linewidth]{inputs/fig15.png}
+\end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Education Outcomes: Older vs Younger Sibling}
+\begin{itemize}
+    \item First-born children to mothers with SP eligibility are more likely to attain higher
+    education
+    \item But that there are no impacts for the younger child
+    \item Why? \pause Possibly because the older child is younger at the time of the sibling's birth, and thus receives more exclusive maternal time
+    \item Time spent with the mother is more important in the early years of life
+    \item Later child may not benefit as much from the increased maternal time - compete with the older sibling
+    \item Another penalty : Birth order penalty!
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Heterogeneity by Mother's Earnings}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{inputs/fig16.png}
+\end{figure}
+\small
+Recall that maternal LS responses were similar - quality of maternal care? Complementarities of household income and maternal time?
+\end{frame}
+% ---------------------------------------------------------------
+
+
+% ---------------------------------------------------------------
+\begin{frame}{Heterogeneity by Mother's Earnings}
+\begin{figure}
+\centering
+\includegraphics[width=0.55\linewidth]{inputs/fig16.png}
+\end{figure}
+\small
+Recall that maternal LS responses were similar - quality of maternal care? Complementarities of household income and maternal time?
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Conclusions}
+\begin{itemize}
+  \item SP has clear incentives for mothers to reduce labor supply before and after birth of the subsequent child
+  \item No evidence of substitution to fathers' labor supply, except for high-earning couples
+  \item SP increases children's schooling performance for the older sibling, especially with high-SES mothers
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+
+
+% ---------------------------------------------------------------
+\begin{frame}{Interpretation}
+\small
+\textbf{For parents:} Higher benefit levels (at fixed duration) shift mothers from market to home in the short run; little long-run earnings impact measured; some short-run \emph{specialization} for high-SES couples.\\[0.4em]
+\textbf{For children:} The \emph{existing} child gains in schooling (GPA/college), especially with high-SES mothers and at the 24-month threshold—consistent with more \emph{exclusive} maternal time replacing lower-quality care.\\[0.4em]
+\textbf{Distributional angle:} The SP can be \emph{regressive} (larger gains among high-SES) and may widen \emph{birth-order gaps}.
+\end{frame}
+% ---------------------------------------------------------------
+
+\section{When Dad Can Stay Home — AEJ Applied 2024}
+
+
+% ---------------------------------------------------------------
+\begin{frame}{Motivation}
+\begin{itemize}
+  \item Flexibility at the workplace is increasingly values as an amenity 
+    \item Especially for parents with young children facing unpredictable health and care needs (snow days and sick days!) 
+    \item And even more so for mothers - on call for domestic household needs 
+    \item Goldin (2014) (and others): workplace flexibility could be key to reducing the gender pay gap
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{What we don't know}
+\begin{itemize}
+  \item The impact of workplace flexibility on health costs of mothers
+    \item Fathers' demand for workplace flexibility and their spillover effects on maternal wellbeing
+    \item Role of moral hazard in paid family leave policies and the role of maternal health benefits
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{This Paper}
+\small
+\textbf{Persson \& Rossin-Slater (2024).} \emph{When Dad Can Stay Home: Fathers’ Workplace Flexibility and Maternal Health}, \textit{AEJ: Applied Economics}, 16(4):186–219.\\[0.6em]
+\begin{itemize}
+  \item \textbf{Question:} Does granting \emph{fathers} flexible access to leave improve \textbf{maternal postpartum health}? 
+  \item \textbf{Policy:} Sweden’s \textbf{“Double Days”} (Jan 1, 2012) — up to \textbf{30 additional days} of \emph{simultaneous} full-time parental leave in the child’s first year (beyond the baseline 10 days). 
+  \item \textbf{Design:} RD–DiD using \emph{share of days eligible} in the first month post-birth around the cutoff
+  \item \textbf{Preview:} More paternal flexibility $\Rightarrow$ \textbf{fewer maternal complications} and \textbf{lower anti-anxiety medicine use}
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Institutional Background}
+\small
+\begin{itemize}
+    \item 1974: Sweden introduced gender-neutral paid parental leave
+  \item Pre-reform: parents could not take paid leave \emph{together} --except \textbf{10 baseline days} in the first 60 days post birth. Why?  
+  \item \textbf{2012 reform:} up to \textbf{30 extra} \emph{intermittent} simultaneous leave days in the first year; \emph{no change} to total leave allotment
+  \item No advance employer notice required for the second leavetaker if the mother is sick; 
+  \item Effectively increases \textbf{temporal flexibility for fathers} on how to allocate the timing of their leave 
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Maternal Health Outcomes (Pre-Reform)}
+\small
+\begin{figure}
+\centering
+\includegraphics[width=0.6\linewidth]{inputs/fig1.png}
+\end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Data}
+\begin{itemize}
+    \item Birth data: all Swedish births 2000-2016 and characteristics, identify singleton births 
+    \item Parental leave claims - all leave spells 
+    \item Maternal health outcomes - inpatient and outpatient visits, prescriptions filled
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+
+% \section{Design \& Identification}
+
+% ---------------------------------------------------------------
+\begin{frame}{Design Sketch: RD–DD Around Jan 1, 2012}
+\small
+\begin{itemize}
+  \item The goal: isolate variation in \textbf{father's leave flexibility} around Jan 1, 2012 reform to study causal effect on maternal health
+  \item Key idea: births just before vs just after Jan 1, 2012 differ in \textbf{eligibility for simultaneous leave} in the first month postpartum
+  \item Eg: Dec 31, 2011 birth: only 29 days eligible in first month -- share 29/30 = 0.97 \\
+  \item Jan 1, 2012 birth: full 30 days eligible -- share 30/30 = 1.00
+  \item Compare outcomes of parents of children born in January - March 2012 and October - December 2011 to those born in same months in 2010, 2009, 2008
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Design Sketch: RD–DD Around Jan 1, 2012}
+\small
+\begin{itemize}
+  \item Estimate:
+  \[
+  Y_{idp} = \alpha_0 + \alpha_1 \textrm{ShareDaysEligible}_{idp} + \alpha_2 1\{d \geq c\} + f(d-c) + 1\{d \geq c\} \times f(d-c) + \theta_p + \varepsilon_{idp}
+  \]
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+
+% ---------------------------------------------------------------
+\begin{frame}{Design Sketch: RD–DD Around Jan 1, 2012}
+\small
+\begin{itemize}
+  \item What's different about this design from the usual RDD?
+       \begin{itemize}
+        \item Running variable is continuous (share of days eligible in month 1)
+        \item Treatment is not a binary jump at the cutoff, but a change in the slope of the running variable at the cutoff
+    \end{itemize}
+    \item Why use the Difference-in-Differences?
+        \begin{itemize}
+            \item Controls for seasonality in births and health outcomes
+        \end{itemize}
+    \item What's the identifying assumption?
+        \begin{itemize}
+            \item No other changes at the date cutoff that differentially affect maternal health outcomes
+        \end{itemize}
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{First Stage: Fathers Use More Leave in Month 1}
+\begin{figure}
+\centering
+\includegraphics[width=0.8\linewidth]{inputs/fig2.png}
+\end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+
+
+% ---------------------------------------------------------------
+\begin{frame}{First Stage: Fathers Use More Leave in Month 1}
+\small
+\begin{itemize}
+  \item Full eligibility $\Rightarrow$ father uses \textbf{any post-baseline leave} \(+\) \textbf{3.9 p.p.} (\textbf{+92\%} at mean). 
+  \item Seasonal variation in leave: needed the non-reform years and the DD design
+  \item Leave starts to increase at the end of 2011 - consistent with them being eligible 
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Maternal Health: Childbirth Complications}
+\begin{figure}
+\centering
+\begin{minipage}{0.45\textheight}
+\includegraphics[width=0.45\textheight]{inputs/fig3.png}
+\end{minipage}\hfill
+\end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+
+
+% ---------------------------------------------------------------
+\begin{frame}{Maternal Health: Anxiety Medications}
     \begin{figure}
-            \centering
-            \includegraphics[width=0.8\textwidth]{inputs/fig3.png}
+\centering
+\includegraphics[width=0.45\textheight]{inputs/fig4.png}
+\end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+
+
+% ---------------------------------------------------------------
+\begin{frame}{Maternal Health: Antibiotic Drugs}
+\begin{figure}
+\centering
+\includegraphics[width=0.45\textheight]{inputs/fig5.png}
+\end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{In Regression Form}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{inputs/fig6.png}
     \end{figure}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Strategy}
+    \small
 \begin{itemize}
-    \item 
-    \begin{equation*}
-        Y_i = \alpha_i + \beta_1 grant_i + \beta_2 grant_i\times loan_{v(i)}+ \gamma_1 loan_{v(i)} + \epsilon_i
-    \end{equation*}
-    \pause \item We want to estimate $\beta_1$ and $\beta_2$
-    \pause \item $Y_i$ - outcome of interest (profits)
-    \pause \item $grant_i = 1$ if household $i$ receives the cash grant
-    \pause \item $loan_{v(i)} = 1$ if household $i$ is in a village $v(i)$ that gets loans (but if so, this means $i$ got shut out of the credit market)
-    \pause \item $\beta_1$ is the effect of the cash grant in non-loan villages
-    \pause \item $\beta_2$ is the additional effect of the cash grant on households from loan villages denied loans (for them, the total effect of cash grants is $\beta_1+\beta_2$)
+   \item Maternal \textbf{inpatient/outpatient} visit for childbirth complications: \textbf{1.0 p.p.} (\textbf{12\%}).
+  \item Mothers with pre-birth medical histories: \textbf{2p.p.} (\textbf{20\%}).
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
 
-
-%---------------------------------------------------------------------
-\begin{frame}{Results I}
-\begin{itemize}
-    \item Within randomly selected loan villages, the ``best'' farmers seem to be the ones who get the loans
-    \pause \item They have more assets and make more profits 
-\end{itemize}
-\pause \begin{figure}
-    \centering
-    \includegraphics[width=0.6\textwidth]{inputs/fig4.png}
-\end{figure}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Results II}
-\begin{itemize}
-    \item \textbf{Main result:} Cash grant is less effective in loan villages
-    \pause \item In both loan and no-loan villages, grant recipients increase consumption
-    \pause \item But effects on recipients' economic performance, as measured by their farms' profits, are only observed in no-loan villages
-    \pause \item Suggests that those not selected into credit have lower profitability: receiving money does not raise their profits too much
-\end{itemize}
+% ---------------------------------------------------------------
+\begin{frame}{In Regression Form}
 \begin{figure}
-    \centering
-    \includegraphics[width=0.4\textwidth]{inputs/fig5.png}
+\centering
+\includegraphics[width=0.8\linewidth]{inputs/fig7.png}
 \end{figure}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{Results III}
+% ---------------------------------------------------------------
+\begin{frame}{In Regression Form}
 \begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{inputs/fig6.png}
+\centering
+\includegraphics[width=0.5\linewidth]{inputs/fig7.png}
 \end{figure}
 \begin{itemize}
-    \item Column 10 presents the key result: $\beta_1+\beta_2 = 0$  for profits
-    \pause \item So is it okay that these households are excluded from the credit market? 
+  \pause \item Maternal anti-anxiety prescription: \textbf{0.2 p.p.} (\textbf{72\%}). 
+\item Maternal antibiotic prescription: \textbf{1.5 p.p.} (\textbf{14\%}).
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Discussion and Conclusion}
-\begin{itemize}
-    \item Returns to investment in cultivation are heterogeneous
-    \pause \item Higher-marginal-return farmers take up agricultural microﬁnance loans more than low-marginal-return farmers
-    \pause \item But there is also a set of high-marginal-return, extremely poor households that are unable to borrow
-    \pause \item Evidence of quantitatively important selection on unobserved variables, which has methodological implications for impact evaluation
-    \pause \item Would have overestimated the impact of credit if they just looked at borrowers vs non-borrowers vs non-borrowers in loan villages
-    \pause \item Two-stage design particularly useful here but also in other contexts where selection is a concern
-    \pause \item Learning more from evaluations about treatment effects conditional on various methods of selection could provide critical information for forming optimal policy
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-\section*{\href{https://www.nber.org/system/files/working_papers/w16018/w16018.pdf}{\textcolor{blue}{Feigenberg, Field, \& Pande (2013)}} \\[5mm] 
-\textnormal{\small{Building Social Capital Through Microfinance}}}
+% ---------------------------------------------------------------
 
 
-%---------------------------------------------------------------------
-\begin{frame}{This paper}
-
-\begin{itemize}
-\item In developing countries, often there is a lack of formal insurance and contract enforcement mechanisms
-\pause  \item Thus social capital can be particularly valuable 
-\pause \item This paper examines the role of repeated social interactions in building social capital
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Setting}
-
-\begin{itemize}
-\item Collaborated with a MFI in West Bengal, India 
-\pause \item A loan officer conducted a meeting to inform female residents about the loan product that was available
-\pause \item Interested women were invited to a five-day training program, after which they were assigned into groups of 10 with a team leader
-\pause \item Clients in a single group lived in close proximity to each other
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Experimental Design}
-
-\begin{itemize}
-\item Each group was offered an individual-liability loan of \$100 with a repayment schedule that would be assigned later 
-\pause \item Groups were randomised into weekly or monthly schedules:
-\begin{itemize}
-    \pause \item Control: 38 groups who met on a monthly basis, repaid in 11 monthly installments
-    \pause \item Treatment 1: 30 groups who met on a weekly basis, repaid in 44 weekly installments
-    \pause \item Treatment 2: 32 groups who met on a weekly basis but repaid monthly 
-\end{itemize}
-\pause \item Meetings:
-\begin{itemize}
-    \pause \item Meetings were held in the team leader's house in the presence of as assigned loan officer
-    \pause \item Clients took an oath to repay the loan regularly and deposited payment with the loan officer 
-    \pause \item Client behaviour was observable to other team members 
-    \pause \item Compliance with meeting protocol was high in Control and Treatment 1 groups, Treatment 2 had poor compliance rates 
-\end{itemize}
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Randomisation Check}
+% ---------------------------------------------------------------
+\begin{frame}{Mechanism: Targeted Co-Presence on Medical Days}
 \begin{figure}
-    \centering
-    \includegraphics[width=0.5\textwidth]{inputs/Fig1.png}
+\centering
+\includegraphics[width=0.8\linewidth]{inputs/fig8.png}
 \end{figure}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{Meeting Frequency and Social Interactions}
-\begin{figure}
-    \centering
-    \includegraphics[width=0.6\textwidth]{inputs/Fig2.png}
-\end{figure}
+% ---------------------------------------------------------------
+\begin{frame}{Mechanism: Targeted Co-Presence on Medical Days}
 \begin{itemize}
-    \pause \item Use survey to ask clients about how frequently they interact with group members at the end of meetings 
-    \pause \item Switching a client from monthly to weekly meetings increases social contact with the group by over 3 sd. 
-    \pause \item These differences are persistent 
+ \item Eligibility increases the probability the \textbf{father takes leave on a day} the mother has a medical encounter by \textbf{+0.5 p.p.} (\textbf{+40\%})
+  \item \textbf{+1.3 p.p.} (\textbf{+65\%}) if the mother has a pre-birth medical history.
+  \item Fathers’ flexibility appears to facilitate \textbf{prompt care} or support on days with domestic health shocks.
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{Risk-sharing}
+
+
+% \section{Implications \& Discussion}
+
+% ---------------------------------------------------------------
+\begin{frame}{Conclusion}
+\small
 \begin{itemize}
-    \item The authors examine whether increased social interaction facilitated risk-sharing arrangements 
-    \pause \item Play field-based lottery games to elicit willingness to form risk-sharing arrangements
-    \pause \item A client was chosen for the lottery and could choose to give tickets to other group members
+    \item Mother’s environment at home can have significant influence on her well-being
+  \item Mothers bear the majority of the cost of a lack of workplace flexibility:
+    \begin{itemize}
+        \item Both directly - career costs of family formation
+        \item But also indirectly - fathers' inflexible leave exacerbates maternal health problems
+    \end{itemize}
+\item Effects on these maternal health outcomes are
+larger in both absolute and relative terms for mothers with a pre-birth medical history
+  \item Allow families to decide when it's optimal for both parents to be home - even if that means simultaneous leave
+  \item Aside: the United States is the only high-income country with a national PFL policy 
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{Risk-sharing II}
-\begin{figure}
-    \centering
-    \includegraphics[width=0.5\textwidth]{inputs/table3.png}
-\end{figure}
+
+% ---------------------------------------------------------------
+\begin{frame}{Interpretation}
 \begin{itemize}
-    \item Column 1: Treatment 1 clients gave 23.8\% more tickets than the Control group 
-    \pause \item Consistent with stronger social ties among clients who meet weekly translating into higher willingness to risk-share in the lottery game
+\item Households face \textbf{stochastic domestic shocks} (e.g., maternal infections, fatigue, stress).
+\item Flexibility expands the feasible set: \textbf{occasion-specific} paternal leave generates real health gains even with \emph{modest average days used}.
+  \item \textbf{Collective model:} Expanding one spouse’s choice set can raise the other’s welfare via intra-household reoptimization.
+  \item Complements child-penalty literature by focusing on \textbf{health spillovers}, not just labor supply.
+  \item Baseline rule restricting simultaneous leave to 10 days likely \textbf{forgoes health benefits} to deter moral hazard; need to quantify the trade-off
+  \item Policy design matters: Timing, simultaneity, and day-level granularity can be as important as total leave weeks.
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Altruism or Reciprocity?}
-\begin{figure}
-    \centering
-    \includegraphics[width=0.5\textwidth]{inputs/table3.png}
-\end{figure}
-\begin{itemize}
-    \item Randomise divisibility of prize 
-    \pause \item Looks like people are doing it more for reciprocity than altruism 
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Loan Default}
-\begin{figure}
-    \centering
-    \includegraphics[width=0.6\textwidth]{inputs/table4.png}
-\end{figure}
-\begin{itemize}
-    \pause \item Second loan offered with same terms for both Control and Treatment 1 clients
-    \pause \item Columns (1) and (2): Treatment 1 clients nearly 3 times (5.2\%) less likely to default on second loan relative to Control 
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Discussion}
-\begin{itemize}
-    \item A program that encourages repeat interactions increases long-run social ties 
-    \pause \item Enhances social capital
-    \pause \item Improved risk-sharing in a setting where contract enforcement is weak $\rightarrow$ welfare-improving 
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-\section*{\href{https://onlinelibrary.wiley.com/doi/abs/10.3982/ECTA5781}{\textcolor{blue}{Karlan and Zinman (2009)}} \\[5mm] 
-\textnormal{\small{Observing Unobservables: Identifying Information Asymmetries with a Consumer Credit Field Experiment}}}
-
-%---------------------------------------------------------------------
-\begin{frame}{This paper}
-\begin{itemize}
-    \item Seminal work in the field of consumer finance in developing countries
-    \pause \item RCT to study the effect of interest rates on default, summarized in the figure
-    \pause \item Seeks to disentangle how interest rates affect default through (1) adverse selection, (2) moral hazard, (3) repayment burden
-\end{itemize}
-\pause \begin{figure}
-    \centering
-    \includegraphics[width=0.5\textwidth]{inputs/main.png}
-\end{figure}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Adverse Selection}
-\begin{figure}
-    \centering
-    \includegraphics[width=0.35\textwidth]{inputs/main.png}
-\end{figure}
-\begin{itemize}
-    \pause \item The paper tests whether interest rates affect default by screening out low-quality borrowers
-    \pause \item This is done comparing 2 vs. 4 and 3 vs. 5
-    \pause \item These are pairs of groups who face the same contract rate and the same repayment incentives
-    \pause  \item They only differ in the loan that was initially offered to them, which determined who accepted to participate in the study
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Moral Hazard}
-\begin{figure}
-    \centering
-    \includegraphics[width=0.35\textwidth]{inputs/main.png}
-\end{figure}
-\begin{itemize}
-    \pause \item The paper tests whether interest rates affect default because they are typically higher on those with bad credit histories
-    \pause \item So interest rates can be used as punishments on those who default
-    \pause \item To isolate this channel, compare 2 vs. 3 and 4 vs. 5
-    \pause \item These are pairs of groups with same offer and contract rates
-    \pause \item They differ in whether they receive a dynamic incentive: groups 2 and 4 are told that their future interest rate will depend on whether they default
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Repayment Burden}
-\begin{figure}
-    \centering
-    \includegraphics[width=0.35\textwidth]{inputs/main.png}
-\end{figure}
-\begin{itemize}
-    \pause \item The paper tests whether interest rates affect default more mechanically, by simply making the amount to be repaid higher
-    \pause  \item This is done comparing 1 vs. 2 and 3
-    \pause \item A higher contract rate (on group 1) has a cost effect: the loan becomes more difficult to pay off so default will mechanically go up
-    \pause \item But the higher contract rate affects the decision to default via moral hazard too: defaulting becomes more attractive
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
 
 \end{document}

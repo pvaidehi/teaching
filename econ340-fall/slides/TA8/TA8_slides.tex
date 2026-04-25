@@ -1,680 +1,732 @@
 \documentclass[11pt,notes=hide,aspectratio=169,mathserif]{beamer}
 
-% PACKAGES
-\usepackage{graphics}  % Support for images/figures
-\usepackage{graphicx}  % Includes the \resizebox command
-\usepackage{tikz}      % For flowcharts
-\usetikzlibrary{arrows.meta, positioning} % Libraries for TikZ
-
-
-\usepackage{url}	   % Includes \urldef and \url commands
-\usepackage{natbib}
-\usepackage{bibentry}  % Includes the \nobibliography command
-\usepackage{verbatim}  %Supports comments
-\usepackage{booktabs} %Supports \toprule, \bottomrule, etc in tables
-\usepackage{etoolbox}  %Supports toggle commands
+% ================= PREAMBLE (matches your style) =================
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{url}
+%\usepackage{natbib}
+\usepackage{bibentry}
+\usepackage{verbatim}
+\usepackage{booktabs}
+\usepackage{etoolbox}
 \usepackage{datetime}
-\usepackage{bm}	%Supports bold math \bm
-%the LaTeX standard:
-\usepackage{cmbright}
-\setbeamerfont{frametitle}{family=\fontfamily{cmbr}\selectfont,size=\Large}
-\fontencoding{OT1}\fontfamily{cmbr}\selectfont
-
-% PACKAGES (that should already be included by your LyX document settings)
-\usepackage{amsfonts}  % Lots of stuff, including \mathbb 
-\usepackage{amsmath}   % Standard math package
-\usepackage{amsthm}    % Includes the comment functions
+\usepackage{bm}
 \usepackage{subcaption}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
 
-% CUSTOM DEFINITIONS
-\def\newblock{} %Get beamer to cooperate with BibTeX
+\def\newblock{}
 \linespread{1.2}
 
-% IDENTIFYING INFORMATION
-\title[class]{ECON 326: Economics of Developing Countries \\ TA Session 8}
-\author[vaidehi's class ]{Vaidehi Parameswaran (Northwestern Econ)}
+\title[class]{ECON 340: Economics of the Family \\ TA Session 8}
+\author[Vaidehi's class]{Vaidehi Parameswaran (Northwestern Economics)}
 \date{\monthname[\the\month] \the\year}
 
-% THEMATIC OPTIONS
-%\setbeamercovered{transparent}
 \usetheme{metropolis}
-\definecolor{mycolor}{RGB}{48,7,144} 
-\setbeamercolor{frametitle}{bg=mycolor, fg=white} % Frame title color
-\setbeamercolor{title separator}{fg=mycolor} 
-\setbeamercolor{progress bar}{fg=mycolor} 
+\definecolor{mycolor}{RGB}{48,7,144}
+\setbeamercolor{frametitle}{bg=mycolor, fg=white}
+\setbeamercolor{title separator}{fg=mycolor}
+\setbeamercolor{progress bar}{fg=mycolor}
 \beamertemplatenavigationsymbolsempty
 \setbeamertemplate{footline}[frame number]{}
 \setbeamertemplate{itemize item}{\small\raisebox{1pt}{\textcolor{mycolor}{$\blacktriangleright$}}}
 \setbeamertemplate{itemize subitem}{\footnotesize\raisebox{1pt}{\textcolor{mycolor}{$\triangleright$}}}
 \setbeamertemplate{itemize subsubitem}{\tiny\raisebox{1pt}{\textcolor{mycolor}{$\triangleright$}}}
 
-% BACKUP SLIDE NUMBERING
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=mycolor,
+  urlcolor=mycolor,
+  citecolor=mycolor
+}
+
 \usepackage{appendixnumberbeamer}
+\setbeamertemplate{section in toc}{%
+  \leavevmode\llap{\textcolor{mycolor}{$\blacktriangleright$}\hspace{0.6ex}}%
+  \inserttocsection\par}
+\setbeamertemplate{subsection in toc}{%
+  \leavevmode\llap{\textcolor{mycolor}{$\triangleright$}\hspace{1.1ex}}%
+  \inserttocsubsection\par}
+
+\AtBeginSection[]{
+  \begin{frame}{Today}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
 
 \begin{document}
 
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 \begin{frame}[plain]
 \titlepage
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
 
-%---------------------------------------------------------------------
-\begin{frame}{Today's Agenda}
 
-\begin{itemize}
-\item \href{https://onlinelibrary-wiley-com.turing.library.northwestern.edu/doi/epdf/10.3982/ECTA18916}{\textcolor{blue}{Fujiwara (2015)}}
-\item \href{https://academic.oup.com/restud/article/92/1/339/7627149}{\textcolor{blue}{Gulzar and Khan (2025)}}
-\item \href{https://www.lse.ac.uk/economics/Assets/Documents/personal-pages/robin-burgess/the-brazilian-amazons-double-reversal-of-fortune-manuscript.pdf}{\textcolor{blue}{Burgess et al. (2019)}}
-\item The Curse of Natural Resources
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{What is political economy?}
-
-\begin{itemize}
-\item When traditional approaches in economics are not enough to explain economic development
-\item What are some themes in political economy?
-\begin{itemize}
-    \item Context matters - where and when 
-    \item Role of culture and institutions
-    \item Role of the state
-    \item Conflict and cooperation
-\end{itemize}
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-\section*{\href{https://onlinelibrary-wiley-com.turing.library.northwestern.edu/doi/epdf/10.3982/ECTA18916}{\textcolor{blue}{Fujiwara (2015)}} \\[5mm] 
-\textnormal{\small{Voting Technology, Political Responsiveness, and Infant Health: Evidence from Brazil}}}
-
-%---------------------------------------------------------------------
-\begin{frame}{This Paper}
-
-\begin{itemize}
-\item Political process can affect public goods provision and redistribution
-\item This paper provides evidence on how improved political participation of poorer voters can enable targeted policies 
-\item Uses the introduction of the Electronic Voting Machine in Brazil 
-\item Affects who gets elected, public health care spending, utilisation, infant health outcomes
-\item Focus: the intensive margin - universal suffrage already exists
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Background}
-
-\begin{itemize}
-\item Electoral systems can de facto disenfranchise certain groups
-\item In Brazil, filling a ballot was not so trivial 
-\begin{itemize}
-    \item 23\% of adults cannot read or write a simple note 
-    \item Paper ballots required voters to write down their vote and read instructions
-\end{itemize}
-\item Substantial error-ridden and blank votes (\textit{residual votes}) as a result 
-\item EV technology introduced in 1990s as a substitute for paper ballots
-\item Reduced residual votes was a spillover effect
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Why does EV make voting easier?}
-
-\begin{itemize}
-\item Provides visual aids - photos of candidates
-\item Guides the user through the several votes that need to be cast 
-\item Machine provides feedback 
-\item Number based interface 
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Pre-reform}
+% ---------------------------------------------------------------
+\begin{frame}{Today's Topics}
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{inputs/fig1.png}
+\includegraphics[width=0.3\linewidth]{inputs/funny.png}
 \end{figure}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{Post-reform}
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{inputs/fig2.png}
-\end{figure}
-\end{frame}
-%---------------------------------------------------------------------
+\section{Difference In Differences and Panel Data}
 
-%---------------------------------------------------------------------
-\begin{frame}{Post-reform}
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{inputs/fig3.png}
-\end{figure}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Post-reform}
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{inputs/fig4.png}
-\end{figure}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Empirical Strategy}
-
-\begin{itemize}
-\item In 1990 and 1994 elections, only paper ballots were used
-\item In 1998 election, EV introduced 
-\begin{itemize}
-    \item Production capacity constraints 
-    \item So only municipalities with $\geq$ 40,550 voters got EV 
-    \item Threshold rule - naturally leads to ...?
-\end{itemize}
-\item In 2002, only EV used in all municipalities
-\pause \item RDD in 1998 election: compare municipalities just above/below 40,500 voters
-\pause \item Use 1994 and 2002 elections for placebo tests 
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Estimation Framework}
-
-\begin{itemize}
-\item $ TE = lim_{v_m \downarrow 40,500} E[y_m| v_m] - lim_{v_m \uparrow 40,500} E[y_m| v_m] $
-\item Estimated effects are ``local'' - apply only to municipalities right around the threshold
-\item The regression is equivalent to an OLS regression using only observations with $v_m \in [40,500 - h, 40,500 + h]$:
-\begin{align*}
-    y_m = \alpha + \beta 1\{v_m \geq 40,500\} + \gamma v_m + \delta v_m 1\{v_m \geq 40,500\} + \epsilon_m
-\end{align*}
-\item $\beta$ is the treatment effect
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{RDD in Pictures}
-\begin{figure}
-\centering
-\includegraphics[width=0.55\textwidth]{inputs/fig5.png}
-\end{figure}
-\begin{itemize}
-\pause \item Jump from 75\% to 95\% upon crossing the cutoff
-\pause \item No such jumps in 1994 and 2002 - valid treatment and control groups
-\pause \item Such large shares are probably erroneous votes, not just abstentions
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Who benefits?}
-\begin{figure}
-\centering
-\includegraphics[width=0.7\textwidth]{inputs/fig6.png}
-\end{figure}
-\begin{itemize}
-\pause \item Split sample based on illiteracy
-\pause \item Consistent narrative that less educated people had more difficulty with paper ballots
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Political Participation and Policy}
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{inputs/fig7.png}
-\end{figure}
-\begin{itemize}
-\pause \item $\theta_{98}$ is an estimate of the impact of EV on outcome $y_{i98}$
-\pause \item Think of the dependent variable as the share of voters that EV affected in a state
-\pause \item Sign-switch is interpreted as evidence of the effect of EV
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Political Participation and Policy}
-\begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{inputs/fig8.png}
-\end{figure}
-\begin{itemize}
-\pause \item Total spending seems unchanged
-\pause \item But share of spending increases 
-\pause \item Increased prenatal visits, birth weight
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Conclusion}
-\begin{itemize}
-\item This paper estimates the effects of EV 
-\pause \item Promoted de facto enfranchisement of mainly less educated voters
-\pause \item Increased spending in a sector particularly beneficial for the poor
-\pause \item Also increased utilisation and health outcomes 
-\pause \item So enfranchisement of poor voters matters for policy 
-\pause \item Enables democracy to work as intended
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-\section*{\href{https://academic.oup.com/restud/article/92/1/339/7627149}{\textcolor{blue}{Gulzar and Khan (2025)}} \\[5mm] 
-\textnormal{\small{Good Politicians: Experimental Evidence on Motivations for Political Candidacy and Government Performance}}}
-
-%---------------------------------------------------------------------
-\begin{frame}{This Paper}
-\begin{itemize}
-\item Typically, we think of the intensive margin of politicians - how to make elected ones more responsive to citizens' preferences
-\pause \item But the extensive margin is usually ignored
-\pause \item How can we motivate good politicians to enter politics? 
-\pause \item This paper asks: can portraying political office as enabling prosocial behaviour encourage good politicians? 
-\pause \item In theory, it's ambiguous:
-\begin{itemize}
-    \pause \item Could encourage prosocial individuals to run
-    \pause \item But may give selfish politicians a cover to run
-    \pause \item And may crowd out competent, but personally-driven individuals
-\end{itemize}
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Setting}
-\begin{itemize}
-\item Setting: Pakistan's 2015 local government reform 
-\item Local level political entry decisions which could help understand the composition of the political class 
-\item Village council elections - party affiliations not allowed
-\item So centralised parties could not play a role in candidate selection
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{The Experiment}
-\begin{itemize}
-\item 192 randomly selected villages, 9,310 people randomly selected 
-\item Enumerators had private meetings and public meetings 
-\item Treatments:
-\begin{itemize}
-    \item Neutral Script 
-    \item Social Benefits Script
-    \item Personal Benefits Script
-\end{itemize}
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Meetings}
-\begin{figure}
-\centering
-\includegraphics[width=0.7\textwidth]{inputs/fig9.png}
-\end{figure}
-\begin{figure}
-\centering
-\includegraphics[width=0.7\textwidth]{inputs/fig10.png}
-\end{figure}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{The Scripts}
-\begin{itemize}
-\item Neutral Script: ``You may be aware that for the first time elections on May 30th will elect a 10–15 member council at the village level. People above the age of 21 can contest these elections. There is not even an education requirement to contest. All you have to do is collect papers from the district office of the Election Commission, and submit them along with two references.''
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{The Scripts}
-    \begin{itemize}
-    \item Social Benefits Script: Neutral Script and ``People who are elected to the village election will be given an excellent opportunity to do their part for the development of their area. Members of the village council will play an important role in improving the quality of government services in the village. They will work towards securing the welfare and rights of the poor. Working together with the district governments, they will improve village school and health facilities. An elected councillor will have a unique opportunity to address the problems of his neighbourhood, and this will make him the standard-bearer of social development for the village''
-    \end{itemize}
-    \end{frame}
-    %---------------------------------------------------------------------
-
-    %---------------------------------------------------------------------
-\begin{frame}{The Scripts}
-    \begin{itemize}
-    \item Personal Benefits Script: Neutral Script and ``People who are elected to the village election will be given a excellent opportunity to move forward in politics, and gain respect and influence in the area. Members of the village council will be able to build connections with tehsil and district level politicians, which will open avenues for advancing in politics. Besides this, council members will also be able to enhance their influence in the village. They will be known as leaders in their neighbourhoods, and this get them more recognition. Their children will be able to build a network in the area, which will make their entry into politics easier.''
-    \end{itemize}
-    \end{frame}
-    %---------------------------------------------------------------------
-%---------------------------------------------------------------------
-\begin{frame}{Design}
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth]{inputs/fig11.png}
-\end{figure}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Political Entry Decisions}
-    \begin{figure}
-        \centering
-        \includegraphics[width=0.7\textwidth]{inputs/table1.png}
-        \end{figure}
-\begin{itemize}
-\item Relative to personal benefits, social benefits increase the probability of candidacy by 1.8 pp
-\item An increase of 86\% 
-\item Opposite effects for personal benefits relative to neutral treatment
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Do voters care to elect these new politicians?}
-    \begin{figure}
-        \centering
-        \includegraphics[width=0.8\textwidth]{inputs/table1.png}
-        \end{figure}
-        \begin{itemize}
-    \item Probability of people getting elected to office is 1.2 pp higher when social benefits are emphasised
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Do these ``good'' politicians actually perform better?}
-    \begin{figure}
-        \centering
-        \includegraphics[width=0.8\textwidth]{inputs/table2.png}
-        \end{figure}
-\begin{itemize}
-\item Elected councils in villages with social message spend their budgets in a manner that's more aligned with citizen preferences
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Conclusion}
-\begin{itemize}
-\item This paper presents new evidence on an important channel of improving representative democracy: the \textit{supply} of politicians
-\item Non-monetary prosocial incentives can be particularly powerful in mobilising a political class that delivers more responsive policy to the electorate
-\item When political office is presented as a means to serve the community, people who would not have otherwise run for office are more likely to do so
-\item Prosocial encouragements at the candidacy stage also result is better alignment of downstream policy outcomes
-\item Important policy implications: it is possible to improve the supply of politicians
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-\section*{\href{https://www.lse.ac.uk/economics/Assets/Documents/personal-pages/robin-burgess/the-brazilian-amazons-double-reversal-of-fortune-manuscript.pdf}{\textcolor{blue}{Burgess et al. (2019)}} \\[5mm] 
-\textnormal{\small{The Brazilian Amazon’s Double Reversal of Fortune}}}
-
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 \begin{frame}{Motivation}
 \begin{itemize}
-\item Environmental damage entails an externality - a market failure 
-\item Requires government involvement to regulate or tax activity to correct this externality
-\item State capacity to effectively regulate is weak in many developing countries
-\item Political economy can be important 
+  \item Ideally, we want to run an experiment to estimate causal effects. Why?
+  \item Often we can't randomly assign people to treatment and control groups.
+  \item We can try to mimic an experiment using observational data. 
+  \item But we're worried about unsoverable characteristics -- called confounding variables. 
+  \item So how should we deal with confounding variables with observational data? 
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{This Paper}
+% ---------------------------------------------------------------
+\begin{frame}{Panel Data}
 \begin{itemize}
-\item Explore how national policies can exert regulatory control over conservation 
-\item Exploit what happens at international borders 
-\item One of the most important global ecosystems: the Amazon rainforest
+  \item We observe observations for
+  each unit $i$ (say a person or geography) across multiple periods $t$
+  \item Why is this useful? \pause It allows us to look at differences in outcomes
+  between treated/untreated units before the treatment occurred
+  \item If treated/control outcomes are different before the treatment, this
+  must be the result of confounding factors.
+  \item So we can potentially use pre-treatment differences to learn about the
+  confounds and adjust for them
+  \item Example: difference-in-differences,
+  which is the most common panel data method used in applied
+  microeconomic research
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Example of Diff-in-Diff Setup (Purely Hypothetical)}
 \begin{itemize}
-    \item The rate of deforestation will affect global warming
-    \item The Amazon is a global public good
+  \item Suppose we want to understand the effect of marriage on income (of women) 
+  \item Why might marriage affect income? 
+  \item We can't randomly assign marriage! So we have to use observational data
+  \item Suppose we only observe post-marriage data on income. What happens if we take the difference of avg. income between married and unmarried folks?
+  \item Omitted variables! Endogeneity! Selection bias!
+  \item In particular, women who choose to marry may have had lower income potential even if they had not married.
+  \item But with panel data, we can actually see what these income differences were before marriage!
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{}
+\begin{itemize}
+  \item Draw figure \pause
+  \item Before marriage, say, unmarried women had an average income 20K higher in every period 
+  \item Can we assume uncofundedness now? \pause No! 
+  \item A better assumption: the gap would have remained 20K over time, if the married women had not married
+  \item This is the idea behind difference-in-differences (DiD)
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{}
+\begin{itemize}
+  \item After the marriage, married women have an average income 30K lower 
+  \item Under the assumption that the difference should have been 20K, we can attribute the extra 10K difference to marriage
+  \item Thus the treatment effect is the post-treatment difference minus the pre-treatment difference
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+
+% ---------------------------------------------------------------
+\begin{frame}{Formalizing the Assumptions of DiD}
+\begin{itemize}
+  \item Assume there are 2 periods, $t = 1,2$. Treated units ($D_i = 1$) are
+  treated in period 2; control units never-treated.
+  \item Let $Y_{it}$ be the observed outcome for unit $i$ in period $t$.
+  Assume $Y_{it} = D_i\, Y_{it}(1) + (1 - D_i)\, Y_{it}(0)$
+  \item Assumption 1: \textbf{No anticipation.} $Y_{i1}(1) = Y_{i1}(0)$.
+  \begin{itemize} 
+    \item The treatment in period 2 does not affect outcomes in period 1.
+  \end{itemize}
+  \item Assumption 2: \textbf{Parallel trends.} \\
+  \begin{equation*}
+    E[Y_{i2}(0) - Y_{i1}(0) | D_i = 1] = E[Y_{i2}(0) - Y_{i1}(0) | D_i = 0]
+  \end{equation*}
+  or equivalently,
+  \begin{equation*}
+    E[Y_{i2}(0) | D_i = 1] - E[Y_{i1}(0) | D_i = 0] = E[Y_{i1}(0) | D_i = 1] - E[Y_{i1}(0) | D_i = 0]
+  \end{equation*}
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Identification}
+\begin{itemize}
+  \item Under the assumptions above, we have:
+  \begin{align*}
+    E[Y_{i2} - Y_{i1} | D_i = 1] - E[Y_{i2} - Y_{i1} | D_i = 0] 
+    \\ = E[Y_{i2}(1) - Y_{i1}(1) | D_i = 1] - E[Y_{i2}(0) - Y_{i1}(0) | D_i = 0] \\
+    = E[Y_{i2}(1) - Y_{i0}(0) | D_i = 1] - E[Y_{i2}(0) - Y_{i1}(0) | D_i = 0] \\
+    = E[Y_{i2}(1) - Y_{i2}(0) | D_i = 1]  + E[Y_{i2}(0) - Y_{i1}(0) | D_i = 1] - E[Y_{i2}(0) - Y_{i1}(0) | D_i = 0] \\
+    = E[Y_{i2}(1) - Y_{i2}(0) | D_i = 1]
+  \end{align*}
+\item Thus, the difference in differences identifies the average treatment effect on the treated (ATT):
+  \begin{equation*}
+    \beta_{ATT} = E[Y_{i2}(1) - Y_{i2}(0) | D_i = 1]
+  \end{equation*}
+\item The ATT is the average effect in period 2 for those units that were treated.
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Estimating the ATT}
+\begin{itemize}
+  \item So under the DiD assumptions, we show that the ATT is identified as follows:
+  \begin{equation*}
+    \beta_{ATT} = E[Y_{i2} - Y_{i1} | D_i = 1] - E[Y_{i2} - Y_{i1} | D_i = 0]
+  \end{equation*}
+  \item How can we estimate this? \pause Plug in sample analogues (means, in this case):
+  \begin{equation*}
+    \hat{\beta}_{ATT} = (\bar{Y}_{12} - \bar{Y}_{11}) - (\bar{Y}_{02} - \bar{Y}_{01})
+  \end{equation*}
+    where $\bar{Y}_{dt}$ is the sample mean for group with units $D_i=d$ in period $t$.
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+
+% ---------------------------------------------------------------
+\begin{frame}{Diff-in-Diff Regression}
+\begin{itemize}
+  \item Consider the regression:
+  \begin{equation*}
+    Y_{it} = \beta_0 + \beta_1 Post_t + \beta_2 D_i + \beta_{3} (Post_t \times D_i) + \epsilon_{it}
+  \end{equation*}
+\item $\beta_3$ is equal to $\beta_{ATT}$ under the DiD assumptions. How?
+\item Analogously, $\hat{\beta_3} = \hat{\tau}_{ATT}$
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Parallel Trends}
+\begin{itemize}
+  \item DiD relies on the parallel trends assumption, which allows for selection
+  bias but requires it to be stable over time. This rules out time-varying
+  confounding factors.
+  \item Often we will be worried about time-varying confounds — e.g.,
+  promotions at work for single versus married women in general
+  \item Testing for pre-treatment differences (``pre-trends'') can help increase
+our confidence in the research design. But they’re not perfect. Why?
+\begin{itemize}
+  \item Just because trends were parallel beforehand doesn’t mean that they
+  would continue to be afterwards
+  \item Often our estimates of pre-trends are noisy so we’re not sure whether
+  they’re actually zero or not.
 \end{itemize}
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Strategy}
+% ---------------------------------------------------------------
+% ---------------------------------------------------------------
+\begin{frame}{Parallel Trends}
 \begin{itemize}
-\item Satellite data on deforestation - even across borers, from 2000 - 2018 
-\begin{itemize}
-\item High resolution - can zoom in for precise effects 
-\end{itemize}
-\item In 2006, Brazil introduced deforestation policies
-\item Spatial RDD design - popular strategy using borders for policy effects
+  \item In addition to looking at the point estimates of pre-trends, it’s
+  important to consider what the CIs rule out. 
+  \item A good rule of thumb for whether a plot is convincing is whether you
+  can draw a smooth line through all the confidence intervals
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.6\linewidth]{inputs/fig1.png}
+  \end{figure}
+  \item Is there necessarily a real effect here?
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
+% ---------------------------------------------------------------
+\begin{frame}{Parallel Trends}
+\begin{itemize}
+  \item In addition to looking at the point estimates of pre-trends, it’s
+  important to consider what the CIs rule out. 
+  \item A good rule of thumb for whether a plot is convincing is whether you
+  can draw a smooth line through all the confidence intervals
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.6\linewidth]{inputs/fig2.png}
+  \end{figure}
+  \item Is there necessarily a real effect here? Maybe not
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+% ---------------------------------------------------------------
+\begin{frame}{Parallel Trends}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.6\linewidth]{inputs/fig3.png}
+  \end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+% ---------------------------------------------------------------
+\begin{frame}{Parallel Trends}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.6\linewidth]{inputs/fig4.png}
+  \end{figure}
+\end{frame}
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{Satellite Data}
+% ---------------------------------------------------------------
+\begin{frame}{Standard Errors in Panel Data}
+\begin{itemize}
+  \item In standard OLS, we assume that $Y_i, X_i$ are i.i.d. across $i$.
+  $Y_i = X_i ' \beta + e_i$.  
+  \item With panel data, we have $Y_{it} = X_{it} ' \beta + e_{it}$.
+ \item Is the independence assumption still valid? No! Why not?
+ \begin{itemize}
+  \item Now they have to be i.i.d across both $i$ and $t$.
+  \item Generally expect $Y_{i1}$ and $Y_{i2}$ to be correlated for the same unit $i$ - serial autocorrelation.
+  \item If treatment is assigned at a higher level, e.g., state level, then observations within a state will be correlated. 
+\end{itemize}
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Clustered Standard Errors}
+\begin{itemize}
+  \item Clustering SEs allows for correlations across observations within a cluster.
+  \item So each cluster is sampled independently. 
+  \item Example: with individual clustering, we allow $Y_{i1}$ and $Y_{i2}$ to be correlated for the same individual $i$.
+  \item But independent for different individuals $i \neq j$.
+ \item Best practice: always cluster at the level of treatment assignment.
+ \item Important: the number of clusters becomes the effective sample size for SEs.
+ \begin{itemize}
+  \item So they should be large enough (e.g., $> 30$).
+  \item Otherwise, unreliable 
+\end{itemize}
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+\section{Instrumental Variables with Panel Data}
+% ---------------------------------------------------------------
+\begin{frame}{Motivation}
+\begin{itemize}
+  \item Sometimes we don't have an RCT or even panel data
+  \item Need to worry about other confounding unobservable variables
+  \item In some of these cases, we may need to use instrumental variables (IV) methods
+  \item Basic idea: if the causal relationship between $Y_i$ and $X_i$
+  is confounded, find a $Z_i$ which “exogenously” shocks $X_i$
+  \item What does that mean? Back to the Mincer equation!
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Mincer Returns to Education}
+\begin{itemize}
+  \item Let $Y_i$ be earnings, $X_i$ be years of schooling, and $\epsilon_i$ be unobserved ability.
+  \item $Y_i = \alpha + \beta X_i + \epsilon_i$
+  \item What's the problem with the OLS estimate of $\beta$? \pause
+  \item Ability matters! $Cov (X_i, \epsilon_i) \neq 0$
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+% ---------------------------------------------------------------
+\begin{frame}{Mincer Returns to Education}
+\begin{itemize}
+  \item Suppose we observe the outcome of a college lottery that offers scholarship, $Z_i$. 
+  \item If $Z_i = 1$, individual $i$ wins the lottery and gets a scholarship.
+  \item If it truly is a lottery, then in some sense, $Z_i$ is randomly assigned and $Cov(Z_i, \epsilon_i) = 0$.
+  What does that get us? \pause
+  \item $ Cov (Z_i, Y_i) = Cov (Z_i, \alpha + \beta X_i + \epsilon_i) = \beta Cov (Z_i, X_i)$
+  \item So we can estimate $\beta$ as:
+  \begin{equation*}
+    \beta = \frac{Cov (Z_i, Y_i)}{Cov (Z_i, X_i)}
+  \end{equation*}
+as long as $Cov (Z_i, X_i) \neq 0$.
+\item So $Z$ is an instrument for $X$.
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+
+% ---------------------------------------------------------------
+\begin{frame}{As Good As Random}
 \begin{figure}
 \centering
-\includegraphics[width=0.4\textwidth]{../TA9/inputs/fig2.2.png}
+\includegraphics[width=0.6\linewidth]{inputs/iv1.png}
 \end{figure}
+Since $Cov (X_i, \epsilon_i) = 0$, OLS is unbiased and $\beta$ is causal effect.
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{Fact 1}
+% ---------------------------------------------------------------
+\begin{frame}{Endogeneity}
 \begin{figure}
 \centering
-\includegraphics[width=0.6\textwidth]{../TA9/inputs/fig2.1.png}
+\includegraphics[width=0.6\linewidth]{inputs/iv2.png}
 \end{figure}
-\begin{itemize}
-\item Until 2005, deforestation level and rate significantly higher on the Brazilian side 
-\end{itemize}
+Now $Cov (X_i, \epsilon_i) \neq 0$, OLS is biased and $\beta$ is not identified. 
 \end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Fact 1}
+% ---------------------------------------------------------------
+% ---------------------------------------------------------------
+\begin{frame}{IV}
 \begin{figure}
 \centering
-\includegraphics[width=0.56\textwidth]{../TA9/inputs/fig2.3.png}
+\includegraphics[width=0.6\linewidth]{inputs/iv3.png}
 \end{figure}
+An instrument with $Cov (Z_i, \epsilon_i) = 0$ and $Cov (Z_i, X_i) \neq 0$ allows us to identify $\beta$ and addresses endogeneity.
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{IV Mechanics}
 \begin{itemize}
-\item Deforestation is visually apparent: forest cover drops sharply exactly at the national border.
+  \item Consider two equations:
+  \begin{align*}
+    Y_i &= \kappa + \rho Z_i + \nu_i \\
+    X_i &= \mu + \pi Z_i + \eta_i
+  \end{align*}
+  \item The IV estimand can be written as the ratio of two covariances:
+  \begin{equation*}
+    \frac{Cov (Z_i, Y_i)}{Cov (Z_i, X_i)} = \frac{Cov (Z_i, Y_i) / Var(Z_i)}{Cov (Z_i, X_i) / Var(Z_i)} = \frac{\rho}{\pi}
+  \end{equation*}
+  \item We need $Cov (Z_i, \nu_i) = Cov (Z_i, \eta_i) = 0$ for this to be valid.
+  \item With binary $Z_i$, this is equivalent to:
+  \begin{equation*}
+    \frac{E[Y_i | Z_i = 1] - E[Y_i | Z_i = 0]}{E[X_i | Z_i = 1] - E[X_i | Z_i = 0]} = \frac{\rho}{\pi}
+  \end{equation*}
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Heterogeneous Effects}
+\begin{itemize}
+  \item In previous version, we assumed constant treatment effects.
+  \item $\beta$ was the same for everyone.
+  \item But effects can be heterogenous across individuals $\implies \beta_i$.
+  \item In particular, when compliance is not perfect, we have:
+  \begin{equation*}
+    Y_i = \alpha + \beta_i X_i + \epsilon_i
+  \end{equation*}
+  \item In this case, IV estimates a Local Average Treatment Effect (LATE).
+  \item LATE is the average effect for compliers -- those whose $X_i$ is affected by $Z_i$.
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
 
 
-%---------------------------------------------------------------------
-\begin{frame}{Fact 2}
+% ---------------------------------------------------------------
+\begin{frame}{Validity of an Instrument}
+\begin{itemize}
+  \item Key validity condition: $Cov (Z_i, \epsilon_i) = 0$.
+  \item Requires two distinct assumptions:
+  \begin{itemize}
+    \item As good as random assignment: the instrument must not depend on potential outcomes $Y_i(0), Y_i(1)$ systematically. 
+    \item Exclusion restriction: the instrument affects $Y_i$ only through its effect on the $X_i$.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{What Makes an Instrument Valid?}
+Graphically, a DAG can represent the exogeneity condition
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth]{../TA9/inputs/fig_2006.png}
+\includegraphics[width=0.5\linewidth]{inputs/iv_dag1.png}
 \end{figure}
-\begin{itemize}
-\item Discontinuity in deforestation rates disappears in 2006 - the first reversal 
-\end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{What happened in 2006?}
-\begin{itemize}
-\item In 2003, in the Lula government, Marina Silva appointed as Minister of Environment
-\item She was from the Amazon, and had a strong environmentalist stance
-\item Law that allowed satellite-based deforestation detection system (DETER) to become a key tool
-\item Sent in federal police and troops to arrest illegal loggers and confiscate their machinery
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Fact 3}
+% ---------------------------------------------------------------
+\begin{frame}{What Makes an Instrument Valid?}
+A violation of as-good-as-random assignment
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth]{../TA9/inputs/fig_post.png}
+\includegraphics[width=0.5\linewidth]{inputs/iv_dag2.png}
 \end{figure}
-\begin{itemize}
-\item Positive effects relatively short-lived 
-\item Deforestation resumes growing in 2014 - the second reversal
-\end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{What changed?}
-\begin{itemize}
-\item New government - gave amnesty to those engaged in illegal deforestation before 2008
-\item 2014 was a politically turbulent year
-\item Next president introduced laws that made it incentive-compatible for public land grabs
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{The Double Reversal}
+% ---------------------------------------------------------------
+\begin{frame}{What Makes an Instrument Valid?}
+A violation of exclusion restriction
 \begin{figure}
 \centering
-\includegraphics[width=0.6\textwidth]{../TA9/inputs/reversal.png}
+\includegraphics[width=0.5\linewidth]{inputs/iv_dag3.png}
 \end{figure}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{Fact 4}
+
+% ---------------------------------------------------------------
+\begin{frame}{Estimating IV}
+\begin{itemize}
+  \item With binary $Z_i$, we can write the IV estimand as a function of population means:
+  \begin{equation*}
+    \beta = \frac{E[Y_i | Z_i = 1] - E[Y_i | Z_i = 0]}{E[X_i | Z_i = 1] - E[X_i | Z_i = 0]}
+  \end{equation*}
+  under the conditions that $Cov (Z_i, \epsilon_i) = 0$ and $Cov (Z_i, X_i) \neq 0$.
+
+  \item We can estimate this using sample analogues (means):
+  \begin{equation*}
+    \hat{\beta} = \frac{\bar{Y}_{Z=1} - \bar{Y}_{Z=0}}{\bar{X}_{Z=1} - \bar{X}_{Z=0}}
+  \end{equation*}
+  \item More generally, we can use the ratio of the reduced form and first stage coefficients from two OLS regressions:
+  \begin{itemize}
+    \item First stage: $X_i = \hat{\mu} + \hat{\pi} Z_i + \hat{\eta}_i$
+    \item Reduced form: $Y_i = \hat{\kappa} + \hat{\rho} Z_i + \hat{\nu}_i$
+    \item Then $\hat{\beta}_{IV} = \frac{\hat{\rho}}{\hat{\pi}}$
+  \end{itemize}
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Quasi-Experimental Evidence}
+\begin{itemize}
+  \item Sometimes, the instrument can actually be randomly assigned -- e.g., lottery
+  \item In other settings, researchers use an instrument that is not explicitly
+  random but may be the result of idiosyncratic factors that are
+  potentially “as-good-as-random”
+  \item This expands the set of cases where we can use IV, but it means the
+  required assumptions deserve extra scrutiny
+  \begin{itemize}
+    \item As-good-as-random means $Z_i$
+    is uncorrelated with background factors
+    relevant for the outcome
+    \item Remember we still need to gauge exclusion: $Z_i $doesn’t affect outcomes
+    except through the specified treatment
+  \end{itemize}
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Angrist and Krueger (1991)}
+\begin{itemize}
+  \item AK (1991) are interested in a classic question in labor economics:
+  what are the labor market returns to an additional year of schooling?
+  \item Why can’t we just compare the earnings of people with more vs. less
+  schooling? 
+  \item What do we need if we want to estimate the effects of schooling on
+  earnings using IV? \pause
+  \begin{itemize}
+    \item An IV that is as-good-as-randomly assigned,
+    and affects earnings only through years of schooling
+  \end{itemize}
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+% ---------------------------------------------------------------
+\begin{frame}{Compulsory Schooling Laws}
+\begin{itemize}
+  \item Most states have compulsory schooling laws that require people to
+  stay in school until their 16th or 17th birthday
+  \begin{itemize}
+    \item At the same time, children tend to start school in September of the
+    year they turn 6
+  \end{itemize}
+  \item AK argue this combination of rules will make it so people planning to
+  drop out will have less schooling if they are born earlier in the year
+  \begin{itemize}
+    \item That is, if the oldest kid in a class is born on January 1 and the
+    youngest kid is born on December 31, then the oldest kid can legally
+    drop out after getting 1 fewer year of education than the youngest kid
+  \end{itemize}
+  \item AK further argue the part of the year in which you are born is
+  effectively random, and therefore instrument for years of schooling
+  with quarter of birth
+  \begin{itemize}
+    \item They operationalize this in cohorts born in the 1930s and 1940s, when
+    compulsory schooling laws were more binding
+  \end{itemize}
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+
+% ---------------------------------------------------------------
+\begin{frame}{}
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{../TA9/inputs/fig_land_use.png}
+\includegraphics[width=0.5\linewidth]{inputs/ak1.png}
 \end{figure}
-\begin{itemize}
-\item Land use restrictions matter 
-\item Protected areas have always been less deforested
-\end{itemize}
+People born in the 1st quarter the of the year tend to have less
+schooling than people born in 2nd, 3rd, or 4th quarters
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{Conclusion}
-\begin{itemize}
-\item Combined, these results demonstrate the reach of the Brazilian state to exploit or conserve its natural resources
-\item Suggest that rapid deforestation in early 2000s was a consequence of a pro-exploitation policy environment 
-\item Policy stance rapidly reversed in 2006-2013 with laws introduced 
-\item But the position stalled and reversed in the post-2013 period with economic and political crisis collided with weakened forest conservation laws 
-\item So state capacity does matter!
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
 
-\section*{The Curse of Natural Resources}
 
-%---------------------------------------------------------------------
-\begin{frame}{What is it?}
-
-\begin{itemize}
-\item The observation that countries rich in natural resources tend to perform badly
-\item Also called the paradox of plenty or the resource curse
-\item Sachs and Warner maybe the first to document this using econometrics in a paper in 1995
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Descriptive Evidence}
+% ---------------------------------------------------------------
+\begin{frame}{}
 \begin{figure}
 \centering
-\includegraphics[width=0.6\textwidth]{../TA9/inputs/fig1.png}
+\includegraphics[width=0.5\linewidth]{inputs/ak2.png}
 \end{figure}
-\begin{itemize}
-\item No countries with extremely abundant natural resources in 1970 grew rapidly for the next 20 years
-\end{itemize}
+Remarkably, people born in the 1st quarter the of the year also tend to
+have higher earnings than people born in 2nd, 3rd, or 4th quarters
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{Descriptive Evidence - Persistence}
+% ---------------------------------------------------------------
+\begin{frame}{}
 \begin{figure}
 \centering
-\includegraphics[width=0.55\textwidth]{../TA9/inputs/fig2.png}
+\includegraphics[width=0.5\linewidth]{inputs/ak3.png}
 \end{figure}
 \begin{itemize}
-\item Conspicuously high growth and low natural resources are China, Korea
-\pause \item Conspicuously high resources and low growth are Gabon, Venezuela and Zambia. 
-\pause \item Not very strong negative relationship...
-\pause \item But clearly no positive relationship
+\item What is the first stage estimate? \pause $11.3996 - 11.5252 = -0.1256$
+\item What is the reduced form estimate? \pause $5.1484 - 5.1574 = -0.0090$
+\item What is the IV estimate of returns to schooling? \pause $ \frac{-0.0090}{-0.1256} = 0.0715$
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-
-%---------------------------------------------------------------------
-\begin{frame}{Possible Mechanisms I}
-
-\begin{itemize}
-\item Long run trend of world prices for commodities
-\begin{itemize}
-    \pause \item Could be downward
-    \pause \item But could also be upward 
-    \pause \item No convincing empirical evidence
-\end{itemize}
-\item Volatility in commodity prices 
-\begin{itemize}
-    \pause \item Commodity prices are highly volatile
-    \pause \item Cyclical shifts of factors of production - transaction costs 
-    \pause \item Low short-run elasticities - large price responses to small shocks
-\end{itemize}
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Possible Mechanisms II}
-\begin{itemize}
-\item Permanent crowding out of manufacturing 
-\begin{itemize}
-    \pause \item How does it happen?
-    \pause \item Positive wealth shocks $\rightarrow$ excess demand for non-traded goods $\rightarrow$ prices $\uparrow$ $\rightarrow$ manufacturing profits $\downarrow$ $\rightarrow$ manufacturing $\downarrow$ growth $\downarrow$
-    \pause \item Diversification is desirable - in particular, industrial policy 
-\end{itemize}
-\end{itemize}
-\end{frame}
-%---------------------------------------------------------------------
-
-%---------------------------------------------------------------------
-\begin{frame}{Crowding out of manufacturing?}
+% ---------------------------------------------------------------
+\begin{frame}{}
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{../TA9/inputs/fig3.png}
+\includegraphics[width=0.5\linewidth]{inputs/ak4.png}
 \end{figure}
 \begin{itemize}
-\item Resource abundance tended to render the export sectors uncompetitive
-\item So never successfully pursued export-led growth
+\item Interpretation: each year of schooling causes a 7.15\% increase in earnings
+\item Why is the OLS different from the IV estimate? \pause We expect OLS to be biased upwards because of ability bias.
+\item IVs tend to have larger standard errors than OLS. Why? \pause Because they use less variation in the data.
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
 
-%---------------------------------------------------------------------
-\begin{frame}{Possible Mechanisms III}
+
+
+% ---------------------------------------------------------------
+\begin{frame}{Evaluating the Assumptions}
+  \begin{itemize}
+\item Relevance: need quarter of birth to be correlated with education. This one can be checked $\implies$ satisfied
+\item As good as random assignment: Need quarter of birth to be independent of potential outcomes ... 
 \begin{itemize}
-\item Autocractic or oligarchic governance
-\begin{itemize}
-    \pause \item Elicits a political contest for resource rents
-    \pause \item Extractive industries emerged 
-    \pause \item Which commodities? Oil, minerals, cocoa, coffee, plantation crops
-\end{itemize}
-\item Anarchic institutions
-\begin{itemize}
-    \pause \item Unenforeceable property rights - tragedy of the commons
-    \pause \item Unsustainably rapid depletion of resources - solution to privatise?
-    \pause \item Civil war - factions fight for control of resources (Angola, Sudan) 
-\end{itemize}
-\pause \item Cyclical expansion of the non-traded sector via the Dutch Disease
-\begin{itemize}
-    \pause \item Currency appreciates $\rightarrow$ govt. spending $\uparrow$ $\rightarrow$ non-traded sector prices $\uparrow$ $\rightarrow$ shift of labour and land from traded to non-traded sector
-    \pause \item Economy more vulnerable to resource-related shocks
+  \item Seems plausible IF parents can't time birth dates strategically
+  \item But... 
 \end{itemize}
 \end{itemize}
 \end{frame}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------
+
+
+
+% ---------------------------------------------------------------
+\begin{frame}{}
+\begin{figure}
+\centering
+\includegraphics[width=0.5\linewidth]{inputs/ak5.png}
+\end{figure}
+\begin{itemize}
+\item Quarter of birth is correlated with some demographic characteristics
+\item Suggests some possible violations of as-good-as-random-assignment...
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{Evaluating the Assumptions}
+  \begin{itemize}
+\item Exclusion: Quarter of birth affects earnings only through number of
+years of education
+\item Implies that people whose years of schooling are unaffected by QOB
+would have same wages if born at different time of the year
+\item Seems generally plausible but... it turns out being older or younger in
+your grade may affect the quality of your education directly
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{}
+\begin{figure}
+\centering
+\includegraphics[width=0.5\linewidth]{inputs/ak6.png}
+\end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+
+
+
+% ---------------------------------------------------------------
+\begin{frame}{}
+\begin{figure}
+\centering
+\includegraphics[width=0.5\linewidth]{inputs/ak7.png}
+\end{figure}
+\end{frame}
+% ---------------------------------------------------------------
+
+
+% ---------------------------------------------------------------
+\begin{frame}{Treatment Effect for Whom?}
+\begin{itemize}
+\item Suppose that we believe the IV assumptions hold (approximately).
+How do we interpret the treatment effect we estimate?
+\item It is a Local Average Treatment Effect (LATE) for compliers — i.e.
+people who would have gotten an extra year of school if they’d been
+born in the latter part of the year
+\item Why might the LATE not correspond with the ATE for the whole
+population?
+\item Treatment effects could be different for people on the margin of
+dropping out ...
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+
+% ---------------------------------------------------------------
+\begin{frame}{Weak Instruments}
+\begin{itemize}
+\item Remember, $\hat{\beta}_{IV} = \frac{\hat{\rho}}{\hat{\pi}}$
+\item If $ \hat{\pi} \lim 0$, then $\hat{\beta}_{IV} \lim \infty$!
+\item This is the \textit{weak instruments} problem - $\hat{\beta_{IV}}$ becomes biased towards the OLS
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+% ---------------------------------------------------------------
+\begin{frame}{Testing for Weak IV}
+\begin{itemize}
+\item A typical rule of thumb is to worry about many/weak instruments if
+the F-statistic on the instruments in the first stage is less than 10
+\item That is, run the first stage regression:
+\begin{equation*}
+X_i = \mu + \pi Z_i + \eta_i
+\end{equation*}
+\item Construct the F-statistic for the null hypothesis that $H_0: \pi = 0$
+\item With one instrument, this is just the square of the t-statistic on $\hat{\pi}$
+\item So $F > 10$ implies $|\text{t-stat}| > \sqrt{10} \approx 3.16$
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+% ---------------------------------------------------------------
+\begin{frame}{How to solve the weak IV problem}
+\begin{itemize}
+\item Split the sample and use part of the sample to select strong instruments
+\item Get a larger sample 
+\item Add control variables that correlate with X but not with $Z$
+\item Come up with a new instrument! (it's hard tho) 
+\end{itemize}
+\end{frame}
+% ---------------------------------------------------------------
+
+
 
 \end{document}
